@@ -30,7 +30,7 @@ For more examples, please refer to the `Documentation`.
 
 **HTML & CSS** - used for developing interface components.
 
-**MediaPipe / OpenPose** - used for real-time human pose estimation.
+**MediaPipe** - used for real-time human pose estimation.
 
 **TensorFlow** - used for training and evaluating the machine-learning model.
 
