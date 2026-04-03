@@ -1,0 +1,61 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36" version="29.3.2">
+  <diagram name="Страница-1" id="_6xr4hFOY-ebU4WQFEYN">
+    <mxGraphModel dx="1678" dy="874" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="qlwkR64wA1pq7JIjlsMu-1" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="User" vertex="1">
+          <mxGeometry height="80" width="40" x="425" y="374" as="geometry" />
+        </mxCell>
+        <mxCell id="qlwkR64wA1pq7JIjlsMu-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="400" width="240" x="505" y="214" as="geometry" />
+        </mxCell>
+        <mxCell id="qlwkR64wA1pq7JIjlsMu-3" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Sign Up /&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;Log In&lt;/span&gt;" vertex="1">
+          <mxGeometry height="60" width="140" x="555" y="224" as="geometry" />
+        </mxCell>
+        <mxCell id="qlwkR64wA1pq7JIjlsMu-7" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Log workout&lt;br&gt;(sets, reps, weight)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="140" x="555" y="464" as="geometry" />
+        </mxCell>
+        <mxCell id="qlwkR64wA1pq7JIjlsMu-8" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;Manage account&lt;/span&gt;" vertex="1">
+          <mxGeometry height="60" width="140" x="555" y="304" as="geometry" />
+        </mxCell>
+        <mxCell id="qlwkR64wA1pq7JIjlsMu-10" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;Recognise the exercise using camera&lt;/span&gt;" vertex="1">
+          <mxGeometry height="60" width="140" x="555" y="384" as="geometry" />
+        </mxCell>
+        <mxCell id="qlwkR64wA1pq7JIjlsMu-11" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;Look for an exercise information&lt;/span&gt;" vertex="1">
+          <mxGeometry height="60" width="140" x="555" y="544" as="geometry" />
+        </mxCell>
+        <mxCell id="qlwkR64wA1pq7JIjlsMu-12" edge="1" parent="1" source="qlwkR64wA1pq7JIjlsMu-1" style="endArrow=classic;html=1;rounded=0;" target="qlwkR64wA1pq7JIjlsMu-3" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="505" y="464" as="sourcePoint" />
+            <mxPoint x="555" y="414" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qlwkR64wA1pq7JIjlsMu-14" edge="1" parent="1" source="qlwkR64wA1pq7JIjlsMu-1" style="endArrow=classic;html=1;rounded=0;" target="qlwkR64wA1pq7JIjlsMu-8" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="485" y="499" as="sourcePoint" />
+            <mxPoint x="614" y="384" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qlwkR64wA1pq7JIjlsMu-15" edge="1" parent="1" source="qlwkR64wA1pq7JIjlsMu-1" style="endArrow=classic;html=1;rounded=0;" target="qlwkR64wA1pq7JIjlsMu-10" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="535" y="509" as="sourcePoint" />
+            <mxPoint x="664" y="394" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qlwkR64wA1pq7JIjlsMu-16" edge="1" parent="1" source="qlwkR64wA1pq7JIjlsMu-1" style="endArrow=classic;html=1;rounded=0;" target="qlwkR64wA1pq7JIjlsMu-7" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="595" y="539" as="sourcePoint" />
+            <mxPoint x="724" y="424" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qlwkR64wA1pq7JIjlsMu-17" edge="1" parent="1" source="qlwkR64wA1pq7JIjlsMu-1" style="endArrow=classic;html=1;rounded=0;" target="qlwkR64wA1pq7JIjlsMu-11" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="535" y="589" as="sourcePoint" />
+            <mxPoint x="664" y="474" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
