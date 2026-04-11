@@ -1,0 +1,685 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Страница-1" id="g5B8vlQbyV3M5YLKAtRE">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="3TMnxTim9AP3t55bqHy2-13" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;STAGE&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="60" x="2" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-14" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;User Journey 1 - Tom&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="210" x="10" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-15" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;strong data-start=&quot;464&quot; data-end=&quot;476&quot; style=&quot;&quot;&gt;Persona:&lt;/strong&gt; Tom, 16, beginner gym user&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="270" x="10" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-16" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;strong data-start=&quot;505&quot; data-end=&quot;514&quot; style=&quot;&quot;&gt;Goal:&lt;/strong&gt; Identify exercises and understand how to perform them correctly&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="490" x="10" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-20" parent="1" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0;dx=10;notch=10;labelBackgroundColor=default;strokeColor=#00994D;strokeWidth=2;" value="&lt;b&gt;Recognition result&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="122.5" x="454.5" y="165" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-21" parent="1" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0;dx=10;notch=10;labelBackgroundColor=default;strokeColor=#00994D;strokeWidth=2;" value="&lt;b&gt;Before workout&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="122.5" x="87" y="165" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-22" parent="1" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0;dx=10;notch=10;labelBackgroundColor=default;strokeColor=#00994D;strokeWidth=2;" value="&lt;b&gt;Visit&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="122.5" x="209.5" y="165" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-23" parent="1" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0;dx=10;notch=10;labelBackgroundColor=default;strokeColor=#00994D;strokeWidth=2;" value="&lt;b&gt;Observation&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="122.5" x="332" y="165" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-24" parent="1" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0;dx=10;notch=10;labelBackgroundColor=default;strokeColor=#00994D;strokeWidth=2;" value="&lt;b&gt;Learning&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="122.5" x="577" y="165" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-25" parent="1" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0;dx=10;notch=10;labelBackgroundColor=default;strokeColor=#00994D;strokeWidth=2;" value="&lt;b&gt;After learning&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="122.5" x="699.5" y="165" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-27" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="82" y="210" as="sourcePoint" />
+            <mxPoint x="825" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-28" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;ACTIONS&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="70" x="2" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-29" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="82" y="410" as="sourcePoint" />
+            <mxPoint x="825" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-30" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;TOUCH POINTS&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="70" x="7" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-31" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="82" y="490" as="sourcePoint" />
+            <mxPoint x="825" y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-33" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;THOUGHTS&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="80" x="2" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-35" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="82" y="610" as="sourcePoint" />
+            <mxPoint x="826" y="610" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-36" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="82" y="740" as="sourcePoint" />
+            <mxPoint x="825" y="740" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-37" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;EMOTIONS&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="80" y="840" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-38" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;PAIN POINTS&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="70" x="2" y="655" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-39" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Enters the gym and looks around&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Tries to understand what others are doing&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="132.5" width="100" x="98.25" y="217.5" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-42" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Opens PoseFit AI&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Navigates to the camera feature&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="102.5" width="100" x="220.75" y="217.5" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-44" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Positions phone to capture his body&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Attempts the exercise&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Adjusts angle for better detection&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="182.5" width="100" x="343.25" y="217.5" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-48" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Waits for detection&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Checks the exercise name&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="82.5" width="100" x="465.75" y="217.5" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-50" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Opens exercise details&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Reads instructions and technique tips&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Reviews how to perform it correctly&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="182.5" width="100" x="588.25" y="217.5" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-55" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Tries the exercise again&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Adjusts posture based on guidance&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="102.5" width="100" x="710.75" y="217.5" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-58" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Mobile app (PoseFit AI)&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="100" x="220.75" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-59" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Smartphone camera&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="100" x="343.25" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-60" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Exercise recognition screen&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="100" x="465.75" y="425" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-61" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Exercise details page&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="45" width="100" x="588.25" y="427.5" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-62" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Gym environment&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="45" width="100" x="710.75" y="427.5" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-64" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;“I don’t know what these exercises are.”&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;“I feel a bit lost here.”&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="100" x="97" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-66" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;“This app might help me.”&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="100" x="220.75" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-67" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;“Am I doing this correctly?”&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;“Will the app recognise it?”&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="100" x="343.25" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-69" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;“Oh, that’s the name.”&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;“Good, it actually works.”&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="100" x="465.75" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-70" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;“Now I see what I was doing wrong.”&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;“This makes it much clearer.”&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="100" x="588.25" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-71" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;“That feels better.”&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;“I’m more confident now.”&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="100" x="710.75" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-72" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Gym environment&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="45" width="100" x="97" y="427.5" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-73" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Doesn’t know exercise names&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Feels unsure what to do&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="100" x="97" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-74" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Not sure if the app will help&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="100" x="220.75" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-75" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Unsure if movement is correct&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Camera positioning may be difficult&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="110" width="100" x="343.25" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-76" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Worries about incorrect detection&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="100" x="465.75" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-77" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Hard to understand technique without guidance&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="100" x="588.25" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-78" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Still afraid of doing exercise incorrectly&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="100" x="710.75" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-86" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 32px;&quot;&gt; 😟&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="40" x="127" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-88" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 32px;&quot;&gt; 🤨&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="40" x="373.25" y="840" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-89" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 32px;&quot;&gt;😌&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="40" x="495.75" y="790" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-90" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 32px;&quot;&gt;🙂&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="40" x="618.25" y="770" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-93" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 32px;&quot;&gt; 😎&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="40" x="740.75" y="750" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-95" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 32px;&quot;&gt;🤔&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="40" x="250.75" y="820" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-96" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Confused&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="69.37" x="112.32" y="930" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-97" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Curious&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="55.62" x="242.94" y="860" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-99" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Slightly unsure&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="106.12" x="340.19" y="880" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-100" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Relieved&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="60.94" x="485.28000000000003" y="830" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-101" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Motivated&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="73.44" x="601.53" y="810" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-102" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Confident &lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="73.44" x="724.03" y="790" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-103" edge="1" parent="1" source="3TMnxTim9AP3t55bqHy2-86" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#00994D;strokeWidth=2;" target="3TMnxTim9AP3t55bqHy2-95" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="332" y="850" as="sourcePoint" />
+            <mxPoint x="382" y="800" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-104" edge="1" parent="1" source="3TMnxTim9AP3t55bqHy2-88" style="endArrow=none;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#00994D;strokeWidth=2;" target="3TMnxTim9AP3t55bqHy2-95" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="292" y="950" as="sourcePoint" />
+            <mxPoint x="376" y="900" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-105" edge="1" parent="1" source="3TMnxTim9AP3t55bqHy2-88" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#00994D;strokeWidth=2;" target="3TMnxTim9AP3t55bqHy2-89" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="442" y="950" as="sourcePoint" />
+            <mxPoint x="526" y="900" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-106" edge="1" parent="1" source="3TMnxTim9AP3t55bqHy2-89" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#00994D;strokeWidth=2;" target="3TMnxTim9AP3t55bqHy2-90" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="552" y="900" as="sourcePoint" />
+            <mxPoint x="636" y="850" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-107" edge="1" parent="1" source="3TMnxTim9AP3t55bqHy2-90" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#00994D;strokeWidth=2;" target="3TMnxTim9AP3t55bqHy2-93" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="672" y="880" as="sourcePoint" />
+            <mxPoint x="756" y="830" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-109" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="3" y="980" as="sourcePoint" />
+            <mxPoint x="823" y="980" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-110" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="4" y="140" as="sourcePoint" />
+            <mxPoint x="824" y="140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-111" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;STAGE&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="60" x="2" y="1330" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-112" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;User Journey 2 - George&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="240" x="10" y="1180" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-113" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;strong data-start=&quot;464&quot; data-end=&quot;476&quot; style=&quot;&quot;&gt;Persona:&lt;/strong&gt; George, 43, busy adult working from home&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="340" x="10" y="1220" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-114" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;strong data-start=&quot;505&quot; data-end=&quot;514&quot; style=&quot;&quot;&gt;Goal:&lt;/strong&gt; Quickly find suitable exercises and perform them safely without wasting time&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="520" x="10" y="1260" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-115" parent="1" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0;dx=10;notch=10;labelBackgroundColor=default;strokeColor=#00994D;strokeWidth=2;" value="&lt;b&gt;Learning&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="122.5" x="454.5" y="1335" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-116" parent="1" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0;dx=10;notch=10;labelBackgroundColor=default;strokeColor=#00994D;strokeWidth=2;" value="&lt;b&gt;Before workout&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="122.5" x="87" y="1335" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-117" parent="1" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0;dx=10;notch=10;labelBackgroundColor=default;strokeColor=#00994D;strokeWidth=2;" value="&lt;b&gt;Visit&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="122.5" x="209.5" y="1335" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-118" parent="1" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0;dx=10;notch=10;labelBackgroundColor=default;strokeColor=#00994D;strokeWidth=2;" value="&lt;b&gt;Searching&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="122.5" x="332" y="1335" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-119" parent="1" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0;dx=10;notch=10;labelBackgroundColor=default;strokeColor=#00994D;strokeWidth=2;" value="&lt;b&gt;During workout&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="122.5" x="577" y="1335" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-120" parent="1" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0;dx=10;notch=10;labelBackgroundColor=default;strokeColor=#00994D;strokeWidth=2;" value="&lt;b&gt;After workout&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="122.5" x="699.5" y="1335" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-121" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="82" y="1380" as="sourcePoint" />
+            <mxPoint x="825" y="1380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-122" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;ACTIONS&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="70" x="2" y="1443.75" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-123" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="83" y="1550" as="sourcePoint" />
+            <mxPoint x="826" y="1550" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-124" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;TOUCH POINTS&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="63" x="10" y="1592.5" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-125" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="82" y="1680" as="sourcePoint" />
+            <mxPoint x="825" y="1680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-126" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;THOUGHTS&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="80" y="1740" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-127" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="82" y="1840" as="sourcePoint" />
+            <mxPoint x="826" y="1840" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-128" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="83" y="1950" as="sourcePoint" />
+            <mxPoint x="826" y="1950" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-129" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;EMOTIONS&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="80" y="2050" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-130" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;PAIN POINTS&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="70" x="2" y="1875" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-131" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Decides to exercise at home after work&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Looks for a quick and effective way to train&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="152.5" width="100" x="98.25" y="1387.5" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-132" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Opens PoseFit AI&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Navigates to exercise browsing or filtering&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="122.5" width="100" x="220.75" y="1387.5" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-133" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Filters exercises suitable for home workout&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Selects an exercise&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="122.5" width="100" x="343.25" y="1387.5" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-134" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Opens exercise details&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Reads instructions and watches guidance&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="122.5" width="100" x="465.75" y="1387.5" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-135" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Performs the exercise while following instructions&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Occasionally checks the app&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="122.5" width="100" x="588.25" y="1387.5" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-136" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Finishes session&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Feels satisfied with time-efficient workout&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="122.5" width="100" x="710.75" y="1387.5" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-137" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Mobile app (PoseFit AI)&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="100" x="220.75" y="1560" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-138" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Exercise search/filter feature&lt;/b&gt;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Exercise list screen&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="105" width="100" x="343.25" y="1560" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-139" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Exercise details page&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="100" x="465.75" y="1560" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-140" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Exercise guidance display&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="57.5" width="100" x="588.25" y="1560" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-141" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Home environment&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="45" width="100" x="710.75" y="1560" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-142" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;“I don’t have much time today.”&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;“I need something quick and effective.”&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="100" x="98.25" y="1690" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-143" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;“This should save me time.”&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="100" x="220.75" y="1690" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-144" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;“I hope I can find something I can do at home.”&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="100" x="343.25" y="1690" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-145" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;“I need to make sure I do this correctly.”&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;“I don’t want to get injured.”&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="110" width="100" x="465.75" y="1690" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-146" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;“This is easier than searching online.”&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="100" x="588.25" y="1690" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-147" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;“That was quick and useful.”&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;“I can keep doing this regularly.”&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="100" x="710.75" y="1690" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-148" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;b style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 14px;&quot;&gt;Smartphone&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="100" x="97" y="1560" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-149" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Limited time for exercise&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="100" x="95" y="1850" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-150" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Unsure if the app will be fast and simple&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="100" x="220.75" y="1850" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-151" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Hard to find suitable exercises without equipment&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="100" x="343.25" y="1850" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-152" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Concern about incorrect technique&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="100" x="465.75" y="1850" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-153" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Switching between sources is inconvenient&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="100" x="588.25" y="1850" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-154" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Needs a simple and efficient routine&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="100" x="710.75" y="1850" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-155" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 32px;&quot;&gt; 😐&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="40" x="128.25" y="2050" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-156" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 32px;&quot;&gt; 🤔&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="40" x="374" y="2050" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-157" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 32px;&quot;&gt;😬&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="40" x="495.75" y="2060" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-158" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 32px;&quot;&gt;🙂&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="40" x="618.25" y="1990" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-159" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 32px;&quot;&gt; 😄&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="40" x="741.75" y="1960" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-160" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 32px;&quot;&gt;🙂&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="40" x="250.75" y="2020" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-161" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Neutral&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="66.68" x="113.66" y="2090" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-162" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Interested&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="76.06" x="231.97" y="2060" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-163" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Thinking&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="69.81" x="358.35" y="2090" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-164" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Concerned&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="83.72" x="473.89" y="2100" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-165" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Comfortable&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="97.47" x="589.51" y="2030" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-166" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Satisfied&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="73.44" x="724.03" y="2000" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-167" edge="1" parent="1" source="3TMnxTim9AP3t55bqHy2-155" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#00994D;strokeWidth=2;" target="3TMnxTim9AP3t55bqHy2-160" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="333" y="2060" as="sourcePoint" />
+            <mxPoint x="383" y="2010" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-168" edge="1" parent="1" source="3TMnxTim9AP3t55bqHy2-156" style="endArrow=none;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#00994D;strokeWidth=2;" target="3TMnxTim9AP3t55bqHy2-160" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="293" y="2160" as="sourcePoint" />
+            <mxPoint x="377" y="2110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-169" edge="1" parent="1" source="3TMnxTim9AP3t55bqHy2-156" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#00994D;strokeWidth=2;" target="3TMnxTim9AP3t55bqHy2-157" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="443" y="2160" as="sourcePoint" />
+            <mxPoint x="527" y="2110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-170" edge="1" parent="1" source="3TMnxTim9AP3t55bqHy2-157" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;strokeColor=#00994D;strokeWidth=2;" target="3TMnxTim9AP3t55bqHy2-158" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="553" y="2110" as="sourcePoint" />
+            <mxPoint x="637" y="2060" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-171" edge="1" parent="1" source="3TMnxTim9AP3t55bqHy2-158" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#00994D;strokeWidth=2;" target="3TMnxTim9AP3t55bqHy2-159" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="673" y="2090" as="sourcePoint" />
+            <mxPoint x="757" y="2040" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-172" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="4" y="2190" as="sourcePoint" />
+            <mxPoint x="824" y="2190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-173" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="4" y="1310" as="sourcePoint" />
+            <mxPoint x="824" y="1310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-204" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;STAGE&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="60" x="2" y="2500" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-205" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;User Journey 3 - Alexa&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="240" x="10" y="2350" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-206" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;strong data-start=&quot;464&quot; data-end=&quot;476&quot; style=&quot;&quot;&gt;Persona:&lt;/strong&gt; Alexa, 19, experienced gym user&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="340" x="10" y="2390" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-207" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;strong data-start=&quot;505&quot; data-end=&quot;514&quot; style=&quot;&quot;&gt;Goal:&lt;/strong&gt; Track workout performance and quickly access previous results to improve progress&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="570" x="10" y="2430" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-208" parent="1" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0;dx=10;notch=10;labelBackgroundColor=default;strokeColor=#00994D;strokeWidth=2;" value="&lt;font&gt;&lt;b&gt;Logging workout&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="122.5" x="454.5" y="2505" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-209" parent="1" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0;dx=10;notch=10;labelBackgroundColor=default;strokeColor=#00994D;strokeWidth=2;" value="&lt;b&gt;Before workout&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="122.5" x="87" y="2505" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-210" parent="1" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0;dx=10;notch=10;labelBackgroundColor=default;strokeColor=#00994D;strokeWidth=2;" value="&lt;b&gt;Visit&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="122.5" x="209.5" y="2505" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-211" parent="1" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0;dx=10;notch=10;labelBackgroundColor=default;strokeColor=#00994D;strokeWidth=2;" value="&lt;b&gt;Checking history&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="122.5" x="332" y="2505" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-212" parent="1" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0;dx=10;notch=10;labelBackgroundColor=default;strokeColor=#00994D;strokeWidth=2;" value="&lt;b&gt;Reviewing progress&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="122.5" x="577" y="2505" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-213" parent="1" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0;dx=10;notch=10;labelBackgroundColor=default;strokeColor=#00994D;strokeWidth=2;" value="&lt;b&gt;After workout&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="122.5" x="700.5" y="2505" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-214" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="82" y="2550" as="sourcePoint" />
+            <mxPoint x="825" y="2550" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-215" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;ACTIONS&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="70" x="2" y="2608.75" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-216" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="83" y="2720" as="sourcePoint" />
+            <mxPoint x="826" y="2720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-217" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;TOUCH POINTS&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="70" x="7" y="2765" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-218" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="82" y="2850" as="sourcePoint" />
+            <mxPoint x="825" y="2850" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-219" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;THOUGHTS&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="80" y="2905" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-220" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="82" y="3000" as="sourcePoint" />
+            <mxPoint x="826" y="3000" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-221" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="83" y="3100" as="sourcePoint" />
+            <mxPoint x="826" y="3100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-222" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;EMOTIONS&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="80" y="3200" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-223" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;PAIN POINTS&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="40" width="70" x="5" y="3025" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-224" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Arrives at the gym&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Prepares for training&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="92.5" width="100" x="98.25" y="2557.5" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-225" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Opens PoseFit AI&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Navigates to saved records&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="92.5" width="100" x="220.75" y="2557.5" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-226" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Searches for a specific exercise&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Reviews previous weights, reps, and sets&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="142.5" width="100" x="343.25" y="2557.5" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-227" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Records new sets, reps, and weight&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Updates workout data&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="112.5" width="100" x="465.75" y="2557.5" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-228" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Compares current performance with previous results&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Checks personal records&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="152.5" width="100" x="588.25" y="2557.5" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-229" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Finishes session&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Saves workout data&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="92.5" width="100" x="710.75" y="2557.5" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-230" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Mobile app (PoseFit AI)&lt;/b&gt;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;App home screen&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="90" width="100" x="220.75" y="2730" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-231" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Saved records screen&lt;br&gt;&lt;br&gt;&lt;/b&gt;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Search/filter feature&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="90" width="100" x="343.25" y="2730" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-232" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Input fields (sets, reps, weight)&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="60" width="100" x="465.75" y="2730" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-233" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Progress / history screen&lt;/font&gt;&lt;/b&gt;&lt;div&gt;&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Personal records display&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="110" width="100" x="588.25" y="2730" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-234" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;div&gt;&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Saved workout confirmation&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="100" x="710.75" y="2730" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-235" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;“I need to remember what I did last time.”&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="100" x="98.25" y="2860" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-236" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;“Everything should be saved here.”&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="100" x="220.75" y="2860" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-237" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;“What weight did I use before?”&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;“What weight did I use before?”&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="100" x="343.25" y="2860" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-238" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;“I need to keep this recorded.”&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="100" x="465.75" y="2860" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-239" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;“Good, I’m improving.”&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;“This helps me stay consistent.”&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="110" width="100" x="588.25" y="2860" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-240" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;“Now I don’t need to remember everything.”&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="100" x="710.75" y="2860" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-241" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;b style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-size: 14px;&quot;&gt;Smartphone&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="100" x="97" y="2730" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-242" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Cannot remember previous workout details&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="100" x="95" y="3010" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-243" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Needs quick access to records&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="100" x="220.75" y="3010" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-244" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Hard to track progress mentally&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="100" x="343.25" y="3010" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-245" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Manual tracking can be inconvenient&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="100" x="465.75" y="3010" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-246" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Difficult to measure improvement without data&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="100" x="588.25" y="3010" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-247" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Risk of forgetting results if not saved&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="100" x="710.75" y="3010" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-248" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 32px;&quot;&gt; 😐&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="40" x="128.25" y="3200" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-249" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 32px;&quot;&gt; 🤔&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="40" x="374" y="3200" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-250" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 32px;&quot;&gt;😐&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="40" x="495.76" y="3200" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-251" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 32px;&quot;&gt;😄&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="40" x="618.24" y="3120" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-252" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 32px;&quot;&gt; 😎&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="40" x="740.75" y="3130" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-253" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 32px;&quot;&gt;🙂&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="40" x="250.75" y="3160" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-254" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Neutral&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="66.68" x="113.65999999999997" y="3240" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-255" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Confident&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="20" width="76.06" x="231.97000000000003" y="3200" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-256" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Thinking&lt;/b&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="69.81" x="358.35" y="3240" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-257" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Focused&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="20" width="66.11" x="482.7" y="3240" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-258" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Satisfied&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="20" width="70.49" x="603" y="3160" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-259" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Confident&lt;/font&gt;&lt;/b&gt;" vertex="1">
+          <mxGeometry height="20" width="73.44" x="724.03" y="3170" as="geometry" />
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-260" edge="1" parent="1" source="3TMnxTim9AP3t55bqHy2-248" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#00994D;strokeWidth=2;" target="3TMnxTim9AP3t55bqHy2-253" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="333" y="3210" as="sourcePoint" />
+            <mxPoint x="383" y="3160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-261" edge="1" parent="1" source="3TMnxTim9AP3t55bqHy2-249" style="endArrow=none;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#00994D;strokeWidth=2;" target="3TMnxTim9AP3t55bqHy2-253" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="293" y="3310" as="sourcePoint" />
+            <mxPoint x="377" y="3260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-262" edge="1" parent="1" source="3TMnxTim9AP3t55bqHy2-249" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#00994D;strokeWidth=2;" target="3TMnxTim9AP3t55bqHy2-250" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="443" y="3310" as="sourcePoint" />
+            <mxPoint x="527" y="3260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-263" edge="1" parent="1" source="3TMnxTim9AP3t55bqHy2-250" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;strokeColor=#00994D;strokeWidth=2;" target="3TMnxTim9AP3t55bqHy2-251" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="553" y="3260" as="sourcePoint" />
+            <mxPoint x="637" y="3210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-264" edge="1" parent="1" source="3TMnxTim9AP3t55bqHy2-251" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#00994D;strokeWidth=2;" target="3TMnxTim9AP3t55bqHy2-252" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="673" y="3240" as="sourcePoint" />
+            <mxPoint x="757" y="3190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-265" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="4" y="3340" as="sourcePoint" />
+            <mxPoint x="824" y="3340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3TMnxTim9AP3t55bqHy2-266" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="4" y="2480" as="sourcePoint" />
+            <mxPoint x="824" y="2480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
