@@ -79,6 +79,31 @@ def login():
         }
     }), 200
 
+@app.route('/delete-account', methods=['POST'])
+def delete_account():
+    data = request.get_json()
+
+    user_id = data.get('user_id')
+
+    if not user_id:
+        return jsonify({"success": False, "message": "User ID is required."}), 400
+
+    cursor = db.cursor(dictionary=True)
+
+    cursor.execute("SELECT id FROM users WHERE id = %s", (user_id,))
+    user = cursor.fetchone()
+
+    if not user:
+        return jsonify({"success": False, "message": "User not found."}), 404
+
+    cursor.execute("DELETE FROM workout_logs WHERE user_id = %s", (user_id,))
+    cursor.execute("DELETE FROM users WHERE id = %s", (user_id,))
+    db.commit()
+
+    return jsonify({
+        "success": True,
+        "message": "Account deleted successfully."
+    }), 200
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

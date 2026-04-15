@@ -54,7 +54,46 @@ class AuthService {
     return value == 'true';
   }
 
+  static Future<String?> getUserId() async {
+    return await storage.read(key: 'userId');
+  }
+
+  static Future<String?> getUsername() async {
+    return await storage.read(key: 'username');
+  }
+
+  static Future<String?> getEmail() async {
+    return await storage.read(key: 'email');
+  }
+
   static Future<void> logout() async {
     await storage.deleteAll();
+  }
+
+  static Future<Map<String, dynamic>> deleteAccount() async {
+    final userId = await storage.read(key: 'userId');
+
+    if (userId == null) {
+      return {
+        'success': false,
+        'message': 'No logged in user found.',
+      };
+    }
+
+    final response = await http.post(
+      Uri.parse('$baseUrl/delete-account'),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({
+        'user_id': int.parse(userId),
+      }),
+    );
+
+    final data = jsonDecode(response.body);
+
+    if (response.statusCode == 200 && data['success'] == true) {
+      await storage.deleteAll();
+    }
+
+    return data;
   }
 }

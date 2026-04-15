@@ -3,9 +3,10 @@ import 'controller/auth_service.dart';
 import 'view/screens/starting_screen.dart';
 import 'view/screens/login_screen.dart';
 import 'view/screens/signup_screen.dart';
-import 'view/screens/main_navigation_screen.dart';
+import 'view/widgets/main_navigation_screen.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const PoseFitApp());
 }
 
@@ -17,8 +18,9 @@ class PoseFitApp extends StatelessWidget {
     return MaterialApp(
       title: 'PoseFit AI',
       debugShowCheckedModeBanner: false,
-      home: const AuthCheckScreen(),
+      initialRoute: '/',
       routes: {
+        '/': (context) => const AuthCheckScreen(),
         '/login': (context) => const LoginScreen(),
         '/signup': (context) => const SignupScreen(),
         '/main-navigation': (context) => const MainNavigationScreen(),
@@ -37,7 +39,9 @@ class AuthCheckScreen extends StatelessWidget {
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return const Scaffold(
-            body: Center(child: CircularProgressIndicator()),
+            body: Center(
+              child: CircularProgressIndicator(),
+            ),
           );
         }
 
