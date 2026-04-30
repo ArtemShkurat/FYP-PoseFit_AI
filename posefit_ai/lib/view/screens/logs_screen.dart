@@ -7,11 +7,12 @@ class LogsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Logs')),
-      // bottomNavigationBar: const BottomNavBar(currentIndex: 3),
-      body: const Center(
-        child: Text('Logs Screen'),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: const Text('Logs'),
       ),
+      // bottomNavigationBar: const BottomNavBar(currentIndex: 3),
+      body: const Center(child: Text('Logs Screen')),
     );
   }
 }

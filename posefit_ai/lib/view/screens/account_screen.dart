@@ -23,6 +23,8 @@ class _AccountScreenState extends State<AccountScreen> {
     final loadedUsername = await AuthService.getUsername();
     final loadedEmail = await AuthService.getEmail();
 
+    if (!mounted) return;
+
     setState(() {
       username = loadedUsername ?? 'Unknown user';
       email = loadedEmail ?? 'No email';
@@ -36,9 +38,7 @@ class _AccountScreenState extends State<AccountScreen> {
       builder: (context) {
         return AlertDialog(
           title: const Text('Log out'),
-          content: const Text(
-            'Are you sure you want to log out?',
-          ),
+          content: const Text('Are you sure you want to log out?'),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context, false),
@@ -59,85 +59,51 @@ class _AccountScreenState extends State<AccountScreen> {
 
     if (!mounted) return;
 
-    Navigator.pushNamedAndRemoveUntil(
-      context,
-      '/',
-      (route) => false,
-    );
+    Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
   }
 
-  Future<void> handleDeleteAccount() async {
-    final confirm = await showDialog<bool>(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: const Text('Delete account'),
-          content: const Text(
-            'Are you sure you want to delete your account? This action cannot be undone.',
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context, false),
-              child: const Text('Cancel'),
-            ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red,
-              ),
-              onPressed: () => Navigator.pop(context, true),
-              child: const Text('Delete'),
-            ),
-          ],
-        );
-      },
+  Widget _profileOptionTile({
+    required String title,
+    VoidCallback? onTap,
+    Widget? trailing,
+  }) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 12),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey.shade300),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: ListTile(
+        title: Text(title),
+        trailing: trailing ?? const Icon(Icons.chevron_right),
+        onTap: onTap,
+      ),
     );
-
-    if (confirm != true) return;
-
-    final result = await AuthService.deleteAccount();
-
-    if (!mounted) return;
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(result['message'] ?? 'Something went wrong.')),
-    );
-
-    if (result['success'] == true) {
-      Navigator.pushNamedAndRemoveUntil(
-        context,
-        '/',
-        (route) => false,
-      );
-    }
   }
 
   @override
   Widget build(BuildContext context) {
     if (isLoading) {
-      return const Scaffold(
-        body: Center(child: CircularProgressIndicator()),
-      );
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Account'),
-      ),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(20),
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.fromLTRB(20, 8, 20, 20),
           child: Column(
             children: [
-              const SizedBox(height: 20),
+              const Text(
+                'Profile',
+                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 24),
               const CircleAvatar(
-                radius: 50,
-                child: Icon(Icons.person, size: 50),
+                radius: 60,
+                child: Icon(Icons.person, size: 60),
               ),
               const SizedBox(height: 16),
-              Text(
-                email,
-                style: const TextStyle(fontSize: 16),
-              ),
+              Text(email, style: const TextStyle(fontSize: 16)),
               const SizedBox(height: 8),
               Text(
                 username,
@@ -146,8 +112,16 @@ class _AccountScreenState extends State<AccountScreen> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 40),
-
+              const SizedBox(height: 32),
+              _profileOptionTile(title: 'Change email', onTap: () {}),
+              _profileOptionTile(title: 'Change password', onTap: () {}),
+              _profileOptionTile(
+                title: 'Settings',
+                onTap: () {
+                  Navigator.pushNamed(context, '/settings');
+                },
+              ),
+              const SizedBox(height: 20),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
@@ -155,19 +129,7 @@ class _AccountScreenState extends State<AccountScreen> {
                   child: const Text('Log Out'),
                 ),
               ),
-
-              const SizedBox(height: 16),
-
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red,
-                  ),
-                  onPressed: handleDeleteAccount,
-                  child: const Text('Delete Account'),
-                ),
-              ),
+              const SizedBox(height: 12),
             ],
           ),
         ),
