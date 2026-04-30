@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class AuthService {
-  static const String baseUrl = 'http://172.25.105.142:5000';
+  static const String baseUrl = 'http://127.0.0.1:5000';
   static const FlutterSecureStorage storage = FlutterSecureStorage();
 
   static Future<Map<String, dynamic>> signup({
@@ -31,10 +31,7 @@ class AuthService {
     final response = await http.post(
       Uri.parse('$baseUrl/login'),
       headers: {'Content-Type': 'application/json'},
-      body: jsonEncode({
-        'email': email,
-        'password': password,
-      }),
+      body: jsonEncode({'email': email, 'password': password}),
     );
 
     final data = jsonDecode(response.body);
@@ -74,18 +71,13 @@ class AuthService {
     final userId = await storage.read(key: 'userId');
 
     if (userId == null) {
-      return {
-        'success': false,
-        'message': 'No logged in user found.',
-      };
+      return {'success': false, 'message': 'No logged in user found.'};
     }
 
     final response = await http.post(
       Uri.parse('$baseUrl/delete-account'),
       headers: {'Content-Type': 'application/json'},
-      body: jsonEncode({
-        'user_id': int.parse(userId),
-      }),
+      body: jsonEncode({'user_id': int.parse(userId)}),
     );
 
     final data = jsonDecode(response.body);

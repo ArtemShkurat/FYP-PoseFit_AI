@@ -1,0 +1,8 @@
+leftHipAngle
+leftKneeAngle
+rightHipAngle
+leftElbowAngle
+rightKneeAngle
+rightElbowAngle
+leftShoulderAngle
+rightShoulderAngle

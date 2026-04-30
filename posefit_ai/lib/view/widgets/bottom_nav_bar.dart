@@ -19,10 +19,7 @@ class BottomNavBar extends StatelessWidget {
       unselectedItemColor: Colors.black54,
       onTap: onTap,
       items: const [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: 'Home',
-        ),
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
         BottomNavigationBarItem(
           icon: Icon(Icons.fitness_center),
           label: 'Exercises',
@@ -31,14 +28,8 @@ class BottomNavBar extends StatelessWidget {
           icon: Icon(Icons.photo_camera),
           label: 'Camera',
         ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.receipt_long),
-          label: 'Logs',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.person),
-          label: 'Account',
-        ),
+        BottomNavigationBarItem(icon: Icon(Icons.receipt_long), label: 'Logs'),
+        BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Account'),
       ],
     );
   }

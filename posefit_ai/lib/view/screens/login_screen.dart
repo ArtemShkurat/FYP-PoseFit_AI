@@ -31,10 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
     });
 
     try {
-      final result = await AuthService.login(
-        email: email,
-        password: password,
-      );
+      final result = await AuthService.login(email: email, password: password);
 
       if (!mounted) return;
 
@@ -43,7 +40,11 @@ class _LoginScreenState extends State<LoginScreen> {
           SnackBar(content: Text(result['message'] ?? 'Login successful.')),
         );
 
-        Navigator.pushReplacementNamed(context, '/main-navigation');
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          '/main-navigation',
+          (route) => false,
+        );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(result['message'] ?? 'Login failed.')),
@@ -52,9 +53,9 @@ class _LoginScreenState extends State<LoginScreen> {
     } catch (e) {
       if (!mounted) return;
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Login failed: $e')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Login failed: $e')));
     } finally {
       if (mounted) {
         setState(() {
@@ -74,9 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Log In'),
-      ),
+      appBar: AppBar(title: const Text('Log In')),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(20),

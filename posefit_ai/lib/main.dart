@@ -4,6 +4,9 @@ import 'view/screens/starting_screen.dart';
 import 'view/screens/login_screen.dart';
 import 'view/screens/signup_screen.dart';
 import 'view/widgets/main_navigation_screen.dart';
+import 'view/screens/settings_screen.dart';
+import 'view/screens/camera_settings_screen.dart';
+import 'view/screens/exercise_details_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,6 +27,9 @@ class PoseFitApp extends StatelessWidget {
         '/login': (context) => const LoginScreen(),
         '/signup': (context) => const SignupScreen(),
         '/main-navigation': (context) => const MainNavigationScreen(),
+        '/settings': (context) => const SettingsScreen(),
+        '/camera-settings': (context) => const CameraSettingsScreen(),
+        '/exercise-details': (context) => const ExerciseDetailsScreen(),
       },
     );
   }
@@ -39,9 +45,7 @@ class AuthCheckScreen extends StatelessWidget {
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return const Scaffold(
-            body: Center(
-              child: CircularProgressIndicator(),
-            ),
+            body: Center(child: CircularProgressIndicator()),
           );
         }
 
