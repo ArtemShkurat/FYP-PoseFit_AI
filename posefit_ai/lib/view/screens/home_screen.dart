@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import '../../controller/auth_service.dart';
+import '../../controller/workout_log_service.dart';
+import '../../model/workout_log.dart';
+import '../../utils/exercise_image_helper.dart';
 
 class HomeScreen extends StatefulWidget {
-  final void Function(int)? onNavigateToTab;
+  final void Function(int, {bool openAdd})? onNavigateToTab;
+  final Function(WorkoutLog log) onOpenLog;
 
-  const HomeScreen({super.key, this.onNavigateToTab});
+  const HomeScreen({super.key, this.onNavigateToTab, required this.onOpenLog});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -13,11 +17,15 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   String username = 'User';
   bool isLoading = true;
+  bool isLoadingLatestLogs = true;
+
+  List<WorkoutLog> latestLogs = [];
 
   @override
   void initState() {
     super.initState();
     loadUsername();
+    loadLatestLogs();
   }
 
   Future<void> loadUsername() async {
@@ -33,6 +41,26 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  Future<void> loadLatestLogs() async {
+    try {
+      final logs = await WorkoutLogService.getLogs();
+
+      if (!mounted) return;
+
+      setState(() {
+        latestLogs = logs.take(3).toList();
+        isLoadingLatestLogs = false;
+      });
+    } catch (_) {
+      if (!mounted) return;
+
+      setState(() {
+        latestLogs = [];
+        isLoadingLatestLogs = false;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 2),
                     Text(
                       'Hi, $username!',
                       style: const TextStyle(
@@ -74,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
 
-                    const SizedBox(height: 24),
+                    const SizedBox(height: 22),
 
                     Row(
                       children: [
@@ -103,59 +131,118 @@ class _HomeScreenState extends State<HomeScreen> {
                             icon: Icons.edit_note,
                             label: 'Manual\nLog',
                             onTap: () {
-                              widget.onNavigateToTab?.call(3);
+                              widget.onNavigateToTab?.call(3, openAdd: true);
                             },
                           ),
                         ),
                       ],
                     ),
 
-                    const SizedBox(height: 28),
+                    const SizedBox(height: 18),
 
                     const Text(
-                      'Last Workout',
+                      'Recent Workouts',
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
 
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 10),
 
-                    Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(14),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey.shade400),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: const Row(
-                        children: [
-                          Icon(Icons.accessibility_new, size: 40),
-                          SizedBox(width: 12),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                    if (isLoadingLatestLogs)
+                      const Center(child: CircularProgressIndicator())
+                    else if (latestLogs.isEmpty)
+                      const Text('No exercises logged yet.')
+                    else
+                      Column(
+                        children: latestLogs.map((log) {
+                          return Container(
+                            margin: const EdgeInsets.only(bottom: 10),
+                            padding: const EdgeInsets.all(14),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.grey.shade400),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Row(
                               children: [
-                                Text(
-                                  'Biceps Curl - 10kg',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
+                                Image.asset(
+                                  ExerciseImageHelper.getImagePath(
+                                    log.exerciseName,
+                                  ),
+                                  width: 44,
+                                  height: 44,
+                                  fit: BoxFit.contain,
+                                ),
+                                const SizedBox(width: 12),
+
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                            child: Text(
+                                              '${log.exerciseName} - ${log.weightUnit == 'bw' ? 'bodyweight' : '${log.weight.toStringAsFixed(0)}${log.weightUnit}'}',
+                                              style: const TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ),
+
+                                          if (log.isPr == true)
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                left: 6,
+                                              ),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                    horizontal: 6,
+                                                    vertical: 2,
+                                                  ),
+                                              decoration: BoxDecoration(
+                                                color: Colors.green,
+                                                borderRadius:
+                                                    BorderRadius.circular(6),
+                                              ),
+                                              child: const Text(
+                                                'PR',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                            ),
+                                        ],
+                                      ),
+
+                                      const SizedBox(height: 4),
+
+                                      Text(
+                                        '${log.setsCount} x ${log.repsCount} reps - ${log.logDate}',
+                                        style: const TextStyle(
+                                          color: Colors.black54,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                                SizedBox(height: 4),
-                                Text(
-                                  '3 x 12 reps - 00/00/0000',
-                                  style: TextStyle(color: Colors.black54),
+
+                                IconButton(
+                                  icon: const Icon(Icons.chevron_right),
+                                  onPressed: () {
+                                    widget.onOpenLog(log);
+                                  },
                                 ),
                               ],
                             ),
-                          ),
-                          Icon(Icons.chevron_right),
-                        ],
+                          );
+                        }).toList(),
                       ),
-                    ),
                   ],
                 ),
               ),

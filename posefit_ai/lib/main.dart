@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'controller/auth_service.dart';
 import 'view/screens/starting_screen.dart';
 import 'view/screens/login_screen.dart';
@@ -7,9 +8,14 @@ import 'view/widgets/main_navigation_screen.dart';
 import 'view/screens/settings_screen.dart';
 import 'view/screens/camera_settings_screen.dart';
 import 'view/screens/exercise_details_screen.dart';
+import 'view/screens/help_support_screen.dart';
+// import 'view/screens/add_workout_log_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
   runApp(const PoseFitApp());
 }
 
@@ -30,6 +36,8 @@ class PoseFitApp extends StatelessWidget {
         '/settings': (context) => const SettingsScreen(),
         '/camera-settings': (context) => const CameraSettingsScreen(),
         '/exercise-details': (context) => const ExerciseDetailsScreen(),
+        '/help-support': (context) => const HelpSupportScreen(),
+        // '/add-workout-log': (context) => const AddWorkoutLogScreen(),
       },
     );
   }

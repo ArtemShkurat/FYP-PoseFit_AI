@@ -14,30 +14,88 @@ class MainNavigationScreen extends StatefulWidget {
 }
 
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
+  Key exercisesKey = UniqueKey();
   int _currentIndex = 0;
+  int? highlightLogId;
+  bool showPrsOnly = false;
+  bool openAddLog = false;
+  bool forceChangePassword = false;
 
-  void _changeTab(int index) {
-    if (index == _currentIndex) return;
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
 
+    final args =
+        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
+
+    if (args != null) {
+      _currentIndex = args['tabIndex'] ?? 0;
+
+      highlightLogId = args['highlightLogId'];
+
+      showPrsOnly = args['showPrsOnly'] ?? false;
+
+      openAddLog = args['openAddLog'] ?? false;
+
+      forceChangePassword = args['forceChangePassword'] ?? false;
+    }
+  }
+
+  void _changeTab(int index, {bool openAdd = false}) {
     setState(() {
+      if (index == 1 && _currentIndex == 1) {
+        exercisesKey = UniqueKey();
+      }
+
       _currentIndex = index;
+
+      openAddLog = openAdd;
+
+      highlightLogId = null;
+      showPrsOnly = false;
     });
   }
 
   Widget _buildCurrentPage() {
     switch (_currentIndex) {
       case 0:
-        return HomeScreen(onNavigateToTab: _changeTab);
+        return HomeScreen(
+          onNavigateToTab: _changeTab,
+          onOpenLog: (log) {
+            setState(() {
+              _currentIndex = 3;
+              highlightLogId = log.id;
+              showPrsOnly = log.isPr;
+            });
+          },
+        );
       case 1:
-        return const ExercisesScreen();
+        return ExercisesScreen(key: exercisesKey);
       case 2:
         return const CameraScreen();
       case 3:
-        return const LogsScreen();
+        return LogsScreen(
+          highlightLogId: highlightLogId,
+          initialShowPrsOnly: showPrsOnly,
+          openAddDialog: openAddLog,
+        );
       case 4:
-        return const AccountScreen();
+        final shouldForceChangePassword = forceChangePassword;
+
+        forceChangePassword = false;
+
+        return AccountScreen(forceChangePassword: shouldForceChangePassword);
       default:
-        return HomeScreen(onNavigateToTab: _changeTab);
+        return HomeScreen(
+          onNavigateToTab: _changeTab,
+          onOpenLog: (log) {
+            setState(() {
+              _currentIndex = 3;
+              highlightLogId = log.id;
+              showPrsOnly = log.isPr;
+            });
+          },
+        );
     }
   }
 

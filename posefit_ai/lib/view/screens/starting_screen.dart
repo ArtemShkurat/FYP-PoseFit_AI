@@ -18,7 +18,11 @@ class StartingScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 40),
-              const Icon(Icons.person, size: 120),
+              Image.asset(
+                'assets/onboarding/fitness-tracker-removebg.png',
+                height: 220,
+                fit: BoxFit.contain,
+              ),
               const SizedBox(height: 30),
               const Text(
                 'Track and improve your gym workouts with AI-powered exercise recognition.',

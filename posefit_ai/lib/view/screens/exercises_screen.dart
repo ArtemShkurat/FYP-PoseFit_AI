@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../controller/exercise_service.dart';
 import '../../model/exercise.dart';
+import '../../utils/exercise_image_helper.dart';
 
 class ExercisesScreen extends StatefulWidget {
   const ExercisesScreen({super.key});
@@ -95,9 +96,9 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
       );
     }
 
-    if (selectedExercise != null) {
-      return _exerciseDetailsScreen();
-    }
+    // if (selectedExercise != null) {
+    //   return _exerciseDetailsScreen();
+    // }
 
     if (selectedCategory.isNotEmpty) {
       return _exerciseListScreen();
@@ -124,7 +125,8 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Text('Exercises'),
+        toolbarHeight: 0,
+        elevation: 0,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -155,8 +157,16 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
                               final exercise = filteredExercises[index];
 
                               return ListTile(
-                                leading: const CircleAvatar(
-                                  child: Icon(Icons.fitness_center),
+                                leading: CircleAvatar(
+                                  backgroundColor: Colors.transparent,
+                                  child: Image.asset(
+                                    ExerciseImageHelper.getImagePath(
+                                      exercise.name,
+                                    ),
+                                    width: 30,
+                                    height: 30,
+                                    fit: BoxFit.contain,
+                                  ),
                                 ),
                                 title: Text(exercise.name),
                                 subtitle: Text(exercise.category),
@@ -185,12 +195,19 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Icon(Icons.accessibility_new, size: 48),
-                                const SizedBox(height: 12),
+                                Expanded(
+                                  child: Image.asset(
+                                    ExerciseImageHelper.getBodyPartImage(
+                                      category,
+                                    ),
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
+                                const SizedBox(height: 8),
                                 Text(
                                   category.toUpperCase(),
+                                  textAlign: TextAlign.center,
                                   style: const TextStyle(
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -262,8 +279,14 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
                         final exercise = list[index];
 
                         return ListTile(
-                          leading: const CircleAvatar(
-                            child: Icon(Icons.fitness_center),
+                          leading: CircleAvatar(
+                            backgroundColor: Colors.transparent,
+                            child: Image.asset(
+                              ExerciseImageHelper.getImagePath(exercise.name),
+                              width: 50,
+                              height: 50,
+                              fit: BoxFit.contain,
+                            ),
                           ),
                           title: Text(exercise.name),
                           subtitle: Text(exercise.muscleGroup),
@@ -281,87 +304,87 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
 
   // ================= EXERCISE DETAILS SCREEN =================
 
-  Widget _exerciseDetailsScreen() {
-    final exercise = selectedExercise!;
+  // Widget _exerciseDetailsScreen() {
+  //   final exercise = selectedExercise!;
 
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: goBack,
-        ),
-        title: Text(exercise.name),
-      ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            if (exercise.isCameraSupported)
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(12),
-                margin: const EdgeInsets.only(bottom: 16),
-                decoration: BoxDecoration(
-                  color: Colors.green.withOpacity(0.12),
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Colors.green),
-                ),
-                child: const Text(
-                  'Camera detection supported',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.green,
-                  ),
-                ),
-              ),
+  //   return Scaffold(
+  //     appBar: AppBar(
+  //       leading: IconButton(
+  //         icon: const Icon(Icons.arrow_back),
+  //         onPressed: goBack,
+  //       ),
+  //       title: Text(exercise.name),
+  //     ),
+  //     body: SingleChildScrollView(
+  //       padding: const EdgeInsets.all(16),
+  //       child: Column(
+  //         crossAxisAlignment: CrossAxisAlignment.start,
+  //         children: [
+  //           if (exercise.isCameraSupported)
+  //             Container(
+  //               width: double.infinity,
+  //               padding: const EdgeInsets.all(12),
+  //               margin: const EdgeInsets.only(bottom: 16),
+  //               decoration: BoxDecoration(
+  //                 color: Colors.green.withOpacity(0.12),
+  //                 borderRadius: BorderRadius.circular(12),
+  //                 border: Border.all(color: Colors.green),
+  //               ),
+  //               child: const Text(
+  //                 'Camera detection supported',
+  //                 style: TextStyle(
+  //                   fontWeight: FontWeight.bold,
+  //                   color: Colors.green,
+  //                 ),
+  //               ),
+  //             ),
 
-            Container(
-              height: 150,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey.shade400),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Center(
-                child: Text(
-                  exercise.muscleGroup.isNotEmpty
-                      ? exercise.muscleGroup
-                      : 'Muscle group',
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ),
+  //           Container(
+  //             height: 150,
+  //             width: double.infinity,
+  //             decoration: BoxDecoration(
+  //               border: Border.all(color: Colors.grey.shade400),
+  //               borderRadius: BorderRadius.circular(12),
+  //             ),
+  //             child: Center(
+  //               child: Text(
+  //                 exercise.muscleGroup.isNotEmpty
+  //                     ? exercise.muscleGroup
+  //                     : 'Muscle group',
+  //                 textAlign: TextAlign.center,
+  //               ),
+  //             ),
+  //           ),
 
-            const SizedBox(height: 20),
+  //           const SizedBox(height: 20),
 
-            const Text(
-              'Overview',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-            ),
-            const SizedBox(height: 8),
-            Text(exercise.description),
+  //           const Text(
+  //             'Overview',
+  //             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+  //           ),
+  //           const SizedBox(height: 8),
+  //           Text(exercise.description),
 
-            const SizedBox(height: 20),
+  //           const SizedBox(height: 20),
 
-            const Text(
-              'Instructions',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-            ),
-            const SizedBox(height: 8),
-            Text(exercise.instructions),
+  //           const Text(
+  //             'Instructions',
+  //             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+  //           ),
+  //           const SizedBox(height: 8),
+  //           Text(exercise.instructions),
 
-            const SizedBox(height: 20),
+  //           const SizedBox(height: 20),
 
-            const Text(
-              'Tips',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-            ),
-            const SizedBox(height: 8),
-            Text(exercise.tips),
-          ],
-        ),
-      ),
-    );
-  }
+  //           const Text(
+  //             'Tips',
+  //             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+  //           ),
+  //           const SizedBox(height: 8),
+  //           Text(exercise.tips),
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
 }
