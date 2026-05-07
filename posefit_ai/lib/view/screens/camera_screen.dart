@@ -9,6 +9,7 @@ import '../../controller/exercise_sample_service.dart';
 import '../../controller/exercise_ml_service.dart';
 import '../../controller/exercise_service.dart';
 import '../../model/exercise.dart';
+import 'camera_settings_screen.dart';
 
 enum ExerciseMode { bicepsCurl, squat, lateralRaise }
 
@@ -42,6 +43,11 @@ class _CameraScreenState extends State<CameraScreen>
   bool _isCollectingData = false;
   bool _hasNavigatedFromPrediction = false;
   bool _lastMovementValid = false;
+
+  double _currentZoom = 1.0;
+  double _minZoom = 1.0;
+  double _maxZoom = 1.0;
+  double _baseZoom = 1.0;
 
   int _samplesCollected = 0;
   int _selectedCameraIndex = 0;
@@ -97,6 +103,47 @@ class _CameraScreenState extends State<CameraScreen>
     if (state == AppLifecycleState.resumed) {
       _checkPermissionAndSetupCamera();
     }
+  }
+
+  Future<void> _setZoom(double zoom) async {
+    if (_controller == null || !_controller!.value.isInitialized) return;
+
+    final safeZoom = zoom.clamp(_minZoom, _maxZoom).toDouble();
+
+    await _controller!.setZoomLevel(safeZoom);
+
+    if (!mounted) return;
+
+    setState(() {
+      _currentZoom = safeZoom;
+    });
+  }
+
+  Widget _zoomButton(String label, double zoom) {
+    final isSelected = (_currentZoom - zoom).abs() < 0.1;
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 6),
+      child: GestureDetector(
+        onTap: () => _setZoom(zoom),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+          decoration: BoxDecoration(
+            color: isSelected
+                ? Colors.white.withOpacity(0.9)
+                : Colors.black.withOpacity(0.45),
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Text(
+            label,
+            style: TextStyle(
+              color: isSelected ? Colors.black : Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
   void _addAngleToBuffer(List<double> buffer, double? angle) {
@@ -236,6 +283,13 @@ class _CameraScreenState extends State<CameraScreen>
     _controller = controller;
     _initializeControllerFuture = controller.initialize();
     await _initializeControllerFuture;
+
+    _minZoom = await _controller!.getMinZoomLevel();
+    _maxZoom = await _controller!.getMaxZoomLevel();
+
+    _currentZoom = 1.0.clamp(_minZoom, _maxZoom);
+
+    await _controller!.setZoomLevel(_currentZoom);
 
     if (!mounted || _isDisposed) return;
 
@@ -654,14 +708,24 @@ class _CameraScreenState extends State<CameraScreen>
       await _stopTracking();
     }
 
+    await _stopRecognition();
+
     if (!mounted) return;
 
     Navigator.pushNamed(
       context,
       '/exercise-details',
-      arguments: matchedExercise,
+      arguments: {'exercise': matchedExercise, 'askToLog': true},
     ).then((_) {
       _hasNavigatedFromPrediction = false;
+    });
+  }
+
+  Future<void> _stopRecognition() async {
+    if (!_isRecognizingExercise) return;
+
+    setState(() {
+      _isRecognizingExercise = false;
     });
   }
 
@@ -759,6 +823,30 @@ class _CameraScreenState extends State<CameraScreen>
       default:
         return false;
     }
+  }
+
+  void _showCameraHelp() {
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: const Text('Camera Guide'),
+        content: const Text(
+          'This screen allows you to detect exercises using your camera.\n\n'
+          '• Press on a "Start Detection" button to begin recognising your movement.\n'
+          '• The app will try to identify the exercise in real-time.\n'
+          '• Make sure your full body is visible for best results.\n'
+          '• Use pinch gestures to zoom if needed.\n'
+          '• Use the switch icon to change cameras.\n\n'
+          'Tip: Stand in good lighting and keep your phone stable.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Got it'),
+          ),
+        ],
+      ),
+    );
   }
 
   void _updateMovementBuffers(PoseResult result) {
@@ -885,13 +973,53 @@ class _CameraScreenState extends State<CameraScreen>
               _controller!.value.isInitialized) {
             return Stack(
               children: [
-                SizedBox.expand(
-                  child: FittedBox(
-                    fit: BoxFit.cover,
-                    child: SizedBox(
-                      width: _controller!.value.previewSize!.height,
-                      height: _controller!.value.previewSize!.width,
-                      child: CameraPreview(_controller!),
+                GestureDetector(
+                  onScaleStart: (_) {
+                    _baseZoom = _currentZoom;
+                  },
+                  onScaleUpdate: (details) async {
+                    if (_controller == null ||
+                        !_controller!.value.isInitialized)
+                      return;
+
+                    final zoom = (_baseZoom * details.scale)
+                        .clamp(_minZoom, _maxZoom)
+                        .toDouble();
+
+                    await _controller!.setZoomLevel(zoom);
+
+                    if (!mounted) return;
+
+                    setState(() {
+                      _currentZoom = zoom;
+                    });
+                  },
+                  child: SizedBox.expand(
+                    child: FittedBox(
+                      fit: BoxFit.cover,
+                      child: SizedBox(
+                        width: _controller!.value.previewSize!.height,
+                        height: _controller!.value.previewSize!.width,
+                        child: CameraPreview(_controller!),
+                      ),
+                    ),
+                  ),
+                ),
+
+                Positioned(
+                  bottom: 40,
+                  right: 20,
+                  child: Container(
+                    width: 48,
+                    height: 48,
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.85),
+                      shape: BoxShape.circle,
+                    ),
+                    child: IconButton(
+                      onPressed: _switchCamera,
+                      icon: const Icon(Icons.flip_camera_ios),
+                      color: Colors.black87,
                     ),
                   ),
                 ),
@@ -899,142 +1027,194 @@ class _CameraScreenState extends State<CameraScreen>
                 Positioned(
                   top: 50,
                   right: 20,
-                  child: FloatingActionButton.small(
-                    heroTag: 'switch_camera',
-                    onPressed: _switchCamera,
-                    child: const Icon(Icons.cameraswitch),
-                  ),
-                ),
-
-                Positioned(
-                  top: 60,
-                  left: 20,
-                  right: 90,
-                  child: Container(
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: Colors.black.withOpacity(0.6),
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          _isCollectingData
-                              ? 'Data Samples Recording'
-                              : 'Exercise Detection',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                        Text(
-                          _poseStatusText,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            height: 1.4,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-
-                Positioned(
-                  bottom: 245,
-                  left: 20,
-                  right: 20,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    decoration: BoxDecoration(
-                      color: Colors.black.withOpacity(0.6),
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: DropdownButtonHideUnderline(
-                      child: DropdownButton<ExerciseMode>(
-                        value: _selectedExercise,
-                        isExpanded: true,
-                        dropdownColor: Colors.black87,
-                        iconEnabledColor: Colors.white,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                        ),
-                        items: const [
-                          DropdownMenuItem(
-                            value: ExerciseMode.bicepsCurl,
-                            child: Text('Biceps Curl'),
-                          ),
-                          DropdownMenuItem(
-                            value: ExerciseMode.squat,
-                            child: Text('Squat'),
-                          ),
-                          DropdownMenuItem(
-                            value: ExerciseMode.lateralRaise,
-                            child: Text('Lateral Raise'),
-                          ),
-                        ],
-                        onChanged: _isTracking ? null : _changeExercise,
-                      ),
-                    ),
-                  ),
-                ),
-
-                Positioned(
-                  bottom: 30,
-                  left: 20,
-                  right: 20,
                   child: Column(
                     children: [
-                      SizedBox(
-                        width: double.infinity,
-                        height: 56,
-                        child: ElevatedButton(
-                          onPressed: _toggleRecognition,
-                          child: Text(
-                            _isRecognizingExercise
-                                ? 'Stop Detection'
-                                : 'Start Detection',
-                          ),
-                        ),
-                      ),
-
-                      const SizedBox(height: 12),
-
-                      SizedBox(
-                        width: double.infinity,
-                        height: 56,
-                        child: ElevatedButton(
-                          onPressed: _toggleDataRecording,
-                          child: Text(
-                            _isCollectingData
-                                ? 'Stop Data Recording'
-                                : 'Start Data Recording',
-                          ),
-                        ),
-                      ),
-
-                      const SizedBox(height: 12),
-
-                      SizedBox(
-                        width: double.infinity,
-                        height: 56,
-                        child: OutlinedButton(
-                          onPressed: () {
-                            setState(() {
-                              _resetCurrentExerciseCounter();
-                            });
-                          },
-                          child: const Text('Reset Reps'),
-                        ),
+                      FloatingActionButton.small(
+                        heroTag: 'camera_settings',
+                        backgroundColor: Colors.black.withOpacity(0.5),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const CameraSettingsScreen(),
+                            ),
+                          );
+                        },
+                        child: const Icon(Icons.settings),
                       ),
                     ],
                   ),
                 ),
+
+                Positioned(
+                  top: 50,
+                  left: 20,
+                  child: GestureDetector(
+                    onTap: _showCameraHelp,
+                    child: Container(
+                      width: 36,
+                      height: 36,
+                      decoration: BoxDecoration(
+                        color: Colors.black.withOpacity(0.4),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Center(
+                        child: Text(
+                          '?',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+
+                // Positioned(
+                //   top: 60,
+                //   left: 20,
+                //   right: 90,
+                //   child: Container(
+                //     padding: const EdgeInsets.all(16),
+                //     decoration: BoxDecoration(
+                //       color: Colors.black.withOpacity(0.6),
+                //       borderRadius: BorderRadius.circular(16),
+                //     ),
+                //     child: Column(
+                //       crossAxisAlignment: CrossAxisAlignment.center,
+                //       children: [
+                //         Text(
+                //           _isCollectingData
+                //               ? 'Data Samples Recording'
+                //               : 'Exercise Detection',
+                //           style: TextStyle(
+                //             color: Colors.white,
+                //             fontSize: 18,
+                //             fontWeight: FontWeight.bold,
+                //           ),
+                //         ),
+                //         const SizedBox(height: 10),
+                //         Text(
+                //           _poseStatusText,
+                //           textAlign: TextAlign.center,
+                //           style: const TextStyle(
+                //             color: Colors.white,
+                //             fontSize: 16,
+                //             height: 1.4,
+                //           ),
+                //         ),
+                //       ],
+                //     ),
+                //   ),
+                // ),
+
+                // Positioned(
+                //   bottom: 245,
+                //   left: 20,
+                //   right: 20,
+                //   child: Container(
+                //     padding: const EdgeInsets.symmetric(horizontal: 16),
+                //     decoration: BoxDecoration(
+                //       color: Colors.black.withOpacity(0.6),
+                //       borderRadius: BorderRadius.circular(16),
+                //     ),
+                //     child: DropdownButtonHideUnderline(
+                //       child: DropdownButton<ExerciseMode>(
+                //         value: _selectedExercise,
+                //         isExpanded: true,
+                //         dropdownColor: Colors.black87,
+                //         iconEnabledColor: Colors.white,
+                //         style: const TextStyle(
+                //           color: Colors.white,
+                //           fontSize: 16,
+                //         ),
+                //         items: const [
+                //           DropdownMenuItem(
+                //             value: ExerciseMode.bicepsCurl,
+                //             child: Text('Biceps Curl'),
+                //           ),
+                //           DropdownMenuItem(
+                //             value: ExerciseMode.squat,
+                //             child: Text('Squat'),
+                //           ),
+                //           DropdownMenuItem(
+                //             value: ExerciseMode.lateralRaise,
+                //             child: Text('Lateral Raise'),
+                //           ),
+                //         ],
+                //         onChanged: _isTracking ? null : _changeExercise,
+                //       ),
+                //     ),
+                //   ),
+                // ),
+                Positioned(
+                  bottom: 40,
+                  left: 0,
+                  right: 0,
+                  child: Center(
+                    child: GestureDetector(
+                      onTap: _toggleRecognition,
+                      child: Container(
+                        width: 60,
+                        height: 60,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white.withOpacity(0.9),
+                        ),
+                        child: Center(
+                          child: Container(
+                            width: _isRecognizingExercise ? 26 : 30,
+                            height: _isRecognizingExercise ? 26 : 30,
+                            decoration: BoxDecoration(
+                              color: _isRecognizingExercise
+                                  ? Colors.red
+                                  : Colors.red,
+                              shape: _isRecognizingExercise
+                                  ? BoxShape.rectangle
+                                  : BoxShape.circle,
+                              borderRadius: _isRecognizingExercise
+                                  ? BorderRadius.circular(6)
+                                  : null,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+
+                // SizedBox(
+                //   width: double.infinity,
+                //   height: 56,
+                //   child: ElevatedButton(
+                //     onPressed: _toggleDataRecording,
+                //     child: Text(
+                //       _isCollectingData
+                //           ? 'Stop Data Recording'
+                //           : 'Start Data Recording',
+                //     ),
+                //   ),
+                // ),
+
+                // const SizedBox(height: 12),
+
+                // SizedBox(
+                //   width: double.infinity,
+                //   height: 56,
+                //   child: OutlinedButton(
+                //     onPressed: () {
+                //       setState(() {
+                //         _resetCurrentExerciseCounter();
+                //       });
+                //     },
+                //     child: const Text('Reset Reps'),
+                //   ),
+                // ),
+                //     ],
+                //   ),
+                // ),
                 if (_isRecognizingExercise && !_lastMovementValid)
                   _buildHintOverlay(),
               ],

@@ -4,6 +4,8 @@ import '../../controller/auth_service.dart';
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
+  final String appVersion = 'v1.0';
+
   Widget _settingsTile({
     required String title,
     String? subtitle,
@@ -72,6 +74,16 @@ class SettingsScreen extends StatelessWidget {
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Settings',
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                ),
+              ),
+
+              const SizedBox(height: 16),
+
               _settingsTile(
                 title: 'Camera settings',
                 onTap: () {
@@ -88,7 +100,46 @@ class SettingsScreen extends StatelessWidget {
               ),
               _settingsTile(
                 title: 'Help & Support',
-                subtitle: 'Not implemented yet',
+                onTap: () {
+                  Navigator.pushNamed(context, '/help-support');
+                },
+              ),
+
+              const SizedBox(height: 32),
+
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'System Info',
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                ),
+              ),
+
+              const SizedBox(height: 16),
+
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 18,
+                ),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey.shade400),
+                  borderRadius: BorderRadius.circular(14),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('App version', style: TextStyle(fontSize: 18)),
+
+                    Text(
+                      appVersion,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
               ),
 
               const SizedBox(height: 30),
