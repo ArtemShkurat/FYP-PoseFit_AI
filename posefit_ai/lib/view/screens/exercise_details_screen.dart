@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:posefit_ai/utils/app_colors.dart';
+import 'package:posefit_ai/utils/app_text_styles.dart';
+import 'package:posefit_ai/utils/app_sizes.dart';
+
 import '../../model/exercise.dart';
 import '../../model/workout_log.dart';
 import '../../controller/workout_log_service.dart';
 import '../../utils/exercise_image_helper.dart';
 import '../widgets/add_workout_log_dialog.dart';
+import '../widgets/tab_button.dart';
 
 class ExerciseDetailsScreen extends StatefulWidget {
   const ExerciseDetailsScreen({super.key});
@@ -49,17 +54,25 @@ class _ExerciseDetailsScreenState extends State<ExerciseDetailsScreen> {
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        title: const Text('Add workout log?'),
+        backgroundColor: AppColors.card,
+        title: const Text(
+          'Add workout log?',
+          style: AppTextStyles.sectionTitle,
+        ),
         content: Text(
           'Exercise detected: ${exercise.name}\n\n'
           'Do you want to add a workout log for this exercise?',
+          style: AppTextStyles.body,
         ),
         actions: [
           TextButton(
             onPressed: () {
               Navigator.pop(context);
             },
-            child: const Text('No'),
+            child: const Text(
+              'No',
+              style: TextStyle(color: AppColors.secondary),
+            ),
           ),
           ElevatedButton(
             onPressed: () async {
@@ -75,10 +88,12 @@ class _ExerciseDetailsScreenState extends State<ExerciseDetailsScreen> {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: const Text('Workout log added successfully'),
-                    backgroundColor: Colors.green,
+                    backgroundColor: AppColors.primaryGreen,
                     behavior: SnackBarBehavior.floating,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(
+                        AppSizes.buttonRadius,
+                      ),
                     ),
                   ),
                 );
@@ -120,52 +135,50 @@ class _ExerciseDetailsScreenState extends State<ExerciseDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(exercise.name)),
+      backgroundColor: AppColors.background,
+      appBar: AppBar(
+        backgroundColor: AppColors.background,
+        elevation: 0,
+        iconTheme: const IconThemeData(color: AppColors.softText),
+        title: Text(exercise.name, style: AppTextStyles.sectionTitle),
+      ),
       body: Column(
         children: [
-          Row(
-            children: [
-              Expanded(
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      showRecords = false;
-                    });
-                  },
-                  child: Container(
-                    height: 44,
-                    alignment: Alignment.center,
-                    color: !showRecords
-                        ? Colors.blue.withOpacity(0.12)
-                        : Colors.transparent,
-                    child: const Text(
-                      'Info',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
+          Container(
+            margin: const EdgeInsets.symmetric(
+              horizontal: AppSizes.screenPadding,
+            ),
+            padding: const EdgeInsets.all(4),
+            decoration: BoxDecoration(
+              color: AppColors.card,
+              borderRadius: BorderRadius.circular(AppSizes.buttonRadius),
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TabButton(
+                    label: 'Info',
+                    isSelected: !showRecords,
+                    onTap: () {
+                      setState(() {
+                        showRecords = false;
+                      });
+                    },
                   ),
                 ),
-              ),
-              Expanded(
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      showRecords = true;
-                    });
-                  },
-                  child: Container(
-                    height: 44,
-                    alignment: Alignment.center,
-                    color: showRecords
-                        ? Colors.blue.withOpacity(0.12)
-                        : Colors.transparent,
-                    child: const Text(
-                      'Records',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
+                Expanded(
+                  child: TabButton(
+                    label: 'Records',
+                    isSelected: showRecords,
+                    onTap: () {
+                      setState(() {
+                        showRecords = true;
+                      });
+                    },
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           Expanded(child: showRecords ? _recordsTab() : _infoTab(exercise)),
         ],
@@ -175,23 +188,32 @@ class _ExerciseDetailsScreenState extends State<ExerciseDetailsScreen> {
 
   Widget _infoTab(Exercise exercise) {
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(AppSizes.screenPadding),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Center(
-            child: Image.asset(
-              ExerciseImageHelper.getImagePath(exercise.name),
-              height: 180,
-              fit: BoxFit.contain,
+            child: Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: AppColors.card,
+                borderRadius: BorderRadius.circular(AppSizes.cardRadius),
+              ),
+              child: Image.asset(
+                ExerciseImageHelper.getImagePath(exercise.name),
+                height: 180,
+                fit: BoxFit.contain,
+              ),
             ),
           ),
+
           const SizedBox(height: 20),
-          Text(
-            exercise.name,
-            style: const TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 12),
+
+          Text(exercise.name, style: AppTextStyles.heading),
+
+          const SizedBox(height: 14),
+
           _sectionCard(title: 'Target muscles', content: exercise.muscleGroup),
           _sectionCard(title: 'Overview', content: exercise.description),
           _sectionCard(title: 'Instructions', content: exercise.instructions),
@@ -203,35 +225,49 @@ class _ExerciseDetailsScreenState extends State<ExerciseDetailsScreen> {
 
   Widget _recordsTab() {
     if (isLoadingLogs) {
-      return const Center(child: CircularProgressIndicator());
+      return const Center(
+        child: CircularProgressIndicator(color: AppColors.primaryGreen),
+      );
     }
 
     if (exerciseLogs.isEmpty) {
-      return const Center(child: Text('No logs for this exercise yet.'));
+      return const Center(
+        child: Text(
+          'No logs for this exercise yet.',
+          style: AppTextStyles.body,
+        ),
+      );
     }
 
     return ListView.builder(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(AppSizes.screenPadding),
       itemCount: exerciseLogs.length,
       itemBuilder: (context, index) {
         final log = exerciseLogs[index];
 
         return Container(
-          margin: const EdgeInsets.only(bottom: 10),
+          margin: const EdgeInsets.only(bottom: 12),
           padding: const EdgeInsets.all(14),
           decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey.shade400),
-            borderRadius: BorderRadius.circular(12),
-            color: Colors.white,
+            color: AppColors.card,
+            borderRadius: BorderRadius.circular(AppSizes.cardRadius),
           ),
           child: Row(
             children: [
-              Image.asset(
-                ExerciseImageHelper.getImagePath(log.exerciseName),
-                width: 44,
-                height: 44,
-                fit: BoxFit.contain,
+              Container(
+                width: 52,
+                height: 52,
+                padding: const EdgeInsets.all(6),
+                decoration: BoxDecoration(
+                  color: AppColors.background.withValues(alpha: 0.45),
+                  borderRadius: BorderRadius.circular(14),
+                ),
+                child: Image.asset(
+                  ExerciseImageHelper.getImagePath(log.exerciseName),
+                  fit: BoxFit.contain,
+                ),
               ),
+
               const SizedBox(width: 12),
 
               Expanded(
@@ -243,45 +279,47 @@ class _ExerciseDetailsScreenState extends State<ExerciseDetailsScreen> {
                         Expanded(
                           child: Text(
                             '${log.exerciseName} - ${_formatWeight(log)}',
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            ),
+                            style: AppTextStyles.cardTitle,
                           ),
                         ),
                         if (log.isPr)
                           Container(
                             margin: const EdgeInsets.only(left: 6),
                             padding: const EdgeInsets.symmetric(
-                              horizontal: 6,
-                              vertical: 2,
+                              horizontal: 7,
+                              vertical: 3,
                             ),
                             decoration: BoxDecoration(
-                              color: Colors.green,
-                              borderRadius: BorderRadius.circular(6),
+                              color: AppColors.primaryGreen,
+                              borderRadius: BorderRadius.circular(8),
                             ),
                             child: const Text(
                               'PR',
                               style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 12,
+                                color: AppColors.background,
+                                fontSize: 11,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
                       ],
                     ),
-                    const SizedBox(height: 4),
+
+                    const SizedBox(height: 5),
+
                     Text(
                       '${log.setsCount} x ${log.repsCount} reps - ${log.logDate}',
-                      style: const TextStyle(color: Colors.black54),
+                      style: AppTextStyles.small,
                     ),
                   ],
                 ),
               ),
 
               IconButton(
-                icon: const Icon(Icons.chevron_right),
+                icon: const Icon(
+                  Icons.chevron_right,
+                  color: AppColors.softText,
+                ),
                 onPressed: () {
                   Navigator.pushReplacementNamed(
                     context,
@@ -315,22 +353,19 @@ class _ExerciseDetailsScreenState extends State<ExerciseDetailsScreen> {
     return Container(
       width: double.infinity,
       margin: const EdgeInsets.only(bottom: 16),
-      padding: const EdgeInsets.all(14),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey.shade400),
-        borderRadius: BorderRadius.circular(12),
+        color: AppColors.card,
+        borderRadius: BorderRadius.circular(AppSizes.cardRadius),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            title,
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
+          Text(title, style: AppTextStyles.cardTitle),
           const SizedBox(height: 8),
           Text(
             content.isNotEmpty ? content : 'Information not available yet.',
-            style: const TextStyle(fontSize: 15, height: 1.4),
+            style: AppTextStyles.body.copyWith(height: 1.4),
           ),
         ],
       ),

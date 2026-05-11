@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:posefit_ai/utils/app_colors.dart';
+import 'package:posefit_ai/utils/app_text_styles.dart';
+import 'package:posefit_ai/utils/app_sizes.dart';
+
 import '../../controller/auth_service.dart';
+import '../widgets/dialog_text_field.dart';
+import '../widgets/app_message_popup.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -26,8 +32,10 @@ class _SignupScreenState extends State<SignupScreen> {
     final password = passwordController.text.trim();
 
     if (username.isEmpty || email.isEmpty || password.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please fill in all fields.')),
+      showAppMessagePopup(
+        context: context,
+        message: 'Please fill in all fields.',
+        isError: true,
       );
       return;
     }
@@ -45,8 +53,11 @@ class _SignupScreenState extends State<SignupScreen> {
 
       if (!mounted) return;
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(result['message'] ?? 'Signup completed.')),
+      showAppMessagePopup(
+        context: context,
+        message: result['message'] ?? 'Signup completed.',
+        isSuccess: result['success'] == true,
+        isError: result['success'] != true,
       );
 
       if (result['success'] == true) {
@@ -55,9 +66,11 @@ class _SignupScreenState extends State<SignupScreen> {
     } catch (e) {
       if (!mounted) return;
 
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('Signup failed: $e')));
+      showAppMessagePopup(
+        context: context,
+        message: 'Signup failed: $e',
+        isError: true,
+      );
     } finally {
       if (mounted) {
         setState(() {
@@ -87,42 +100,65 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Create Account')),
+      backgroundColor: AppColors.background,
+      appBar: AppBar(
+        backgroundColor: AppColors.background,
+        elevation: 0,
+        iconTheme: const IconThemeData(color: AppColors.softText),
+        title: const Text('Create Account', style: AppTextStyles.sectionTitle),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(AppSizes.screenPadding),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              TextField(
+              const Text('Join PoseFit AI', style: AppTextStyles.heading),
+
+              // const SizedBox(height: 8),
+
+              // const Text(
+              //   'Create an account to start tracking your workouts.',
+              //   style: AppTextStyles.body,
+              // ),
+              const SizedBox(height: 28),
+
+              DialogTextField(
                 controller: usernameController,
-                decoration: const InputDecoration(
-                  labelText: 'Username',
-                  border: OutlineInputBorder(),
-                ),
+                labelText: 'Username',
+                prefixIcon: Icons.person_outline,
               ),
+
               const SizedBox(height: 16),
 
-              TextField(
+              DialogTextField(
                 controller: emailController,
-                decoration: const InputDecoration(
-                  labelText: 'Email',
-                  border: OutlineInputBorder(),
-                ),
+                labelText: 'Email',
+                prefixIcon: Icons.email_outlined,
+                keyboardType: TextInputType.emailAddress,
               ),
+
               const SizedBox(height: 16),
 
               TextField(
                 controller: passwordController,
                 obscureText: _obscurePassword,
                 onChanged: validatePassword,
+                style: AppTextStyles.body,
+                cursorColor: AppColors.primaryGreen,
                 decoration: InputDecoration(
                   labelText: 'Password',
-                  border: const OutlineInputBorder(),
+                  labelStyle: AppTextStyles.small,
+                  prefixIcon: const Icon(
+                    Icons.lock_outline,
+                    color: AppColors.aiMint,
+                  ),
                   suffixIcon: IconButton(
                     icon: Icon(
                       _obscurePassword
                           ? Icons.visibility_off_outlined
                           : Icons.visibility_outlined,
+                      color: AppColors.secondary,
                     ),
                     onPressed: () {
                       setState(() {
@@ -130,56 +166,94 @@ class _SignupScreenState extends State<SignupScreen> {
                       });
                     },
                   ),
+                  filled: true,
+                  fillColor: AppColors.card,
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(AppSizes.buttonRadius),
+                    borderSide: BorderSide.none,
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(AppSizes.buttonRadius),
+                    borderSide: const BorderSide(
+                      color: AppColors.primaryGreen,
+                      width: 1.5,
+                    ),
+                  ),
                 ),
               ),
 
-              const SizedBox(height: 12),
+              const SizedBox(height: 16),
 
-              _buildPasswordRequirement('At least 8 characters', hasMinLength),
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: AppColors.card,
+                  borderRadius: BorderRadius.circular(AppSizes.cardRadius),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Password must include:',
+                      style: AppTextStyles.cardTitle,
+                    ),
 
-              _buildPasswordRequirement('1 capital letter', hasUppercase),
+                    const SizedBox(height: 12),
 
-              _buildPasswordRequirement('1 number', hasNumber),
+                    _buildPasswordRequirement(
+                      'At least 8 characters',
+                      hasMinLength,
+                    ),
+                    _buildPasswordRequirement('1 capital letter', hasUppercase),
+                    _buildPasswordRequirement('1 number', hasNumber),
+                    _buildPasswordRequirement('1 symbol', hasSymbol),
+                  ],
+                ),
+              ),
 
-              _buildPasswordRequirement('1 symbol', hasSymbol),
-
-              const SizedBox(height: 24),
+              const SizedBox(height: 28),
 
               SizedBox(
                 width: double.infinity,
-                height: 50,
+                height: AppSizes.buttonHeight,
                 child: ElevatedButton(
                   onPressed: isLoading ? null : handleSignup,
                   child: isLoading
-                      ? const CircularProgressIndicator(color: Colors.white)
-                      : const Text('Sign Up'),
+                      ? const SizedBox(
+                          width: 18,
+                          height: 18,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            color: AppColors.background,
+                          ),
+                        )
+                      : const Text('Sign Up', style: AppTextStyles.buttonText),
                 ),
               ),
 
-              const SizedBox(height: 20),
+              const SizedBox(height: 22),
 
-              Padding(
-                padding: const EdgeInsets.only(left: 100),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    const Text('Already have an account? '),
-
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(context, '/login');
-                      },
-
-                      child: const Text(
-                        'Log In',
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold,
-                        ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Already have an account? ',
+                    style: AppTextStyles.body,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/login');
+                    },
+                    child: const Text(
+                      'Log In',
+                      style: TextStyle(
+                        color: AppColors.primaryGreen,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -190,22 +264,22 @@ class _SignupScreenState extends State<SignupScreen> {
 
   Widget _buildPasswordRequirement(String text, bool isValid) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 6),
+      padding: const EdgeInsets.only(bottom: 8),
       child: Row(
         children: [
           Icon(
             isValid ? Icons.check_circle : Icons.radio_button_unchecked,
             size: 18,
-            color: isValid ? Colors.green : Colors.grey,
+            color: isValid ? AppColors.primaryGreen : AppColors.secondary,
           ),
 
           const SizedBox(width: 8),
 
           Text(
             text,
-            style: TextStyle(
-              color: isValid ? Colors.green : Colors.grey,
-              fontSize: 14,
+            style: AppTextStyles.small.copyWith(
+              color: isValid ? AppColors.primaryGreen : AppColors.secondary,
+              fontWeight: isValid ? FontWeight.w600 : FontWeight.normal,
             ),
           ),
         ],

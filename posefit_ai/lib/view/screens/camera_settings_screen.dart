@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:posefit_ai/utils/app_colors.dart';
+import 'package:posefit_ai/utils/app_text_styles.dart';
+import 'package:posefit_ai/utils/app_sizes.dart';
 
 class CameraSettingsScreen extends StatefulWidget {
   const CameraSettingsScreen({super.key});
@@ -82,30 +85,102 @@ class _CameraSettingsScreenState extends State<CameraSettingsScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Camera settings')),
+      backgroundColor: AppColors.background,
+
+      appBar: AppBar(
+        backgroundColor: AppColors.background,
+        elevation: 0,
+        iconTheme: const IconThemeData(color: AppColors.softText),
+        title: const Text('Camera Settings', style: AppTextStyles.sectionTitle),
+      ),
+
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey.shade400),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: ListTile(
-              title: const Text(
-                'Camera consent',
-                style: TextStyle(fontSize: 18),
+          padding: const EdgeInsets.all(AppSizes.screenPadding),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text('Permissions', style: AppTextStyles.heading),
+
+              const SizedBox(height: 8),
+
+              const Text(
+                'Manage camera access used for exercise detection.',
+                style: AppTextStyles.body,
               ),
-              trailing: Text(
-                cameraStatusText,
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                  color: statusColor,
+
+              const SizedBox(height: AppSizes.sectionSpacing),
+
+              Container(
+                padding: const EdgeInsets.all(18),
+                decoration: BoxDecoration(
+                  color: AppColors.card,
+                  borderRadius: BorderRadius.circular(AppSizes.cardRadius),
+                ),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 52,
+                      height: 52,
+                      decoration: BoxDecoration(
+                        color: AppColors.background.withValues(alpha: 0.45),
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                      child: const Icon(
+                        Icons.camera_alt,
+                        color: AppColors.aiMint,
+                        size: 28,
+                      ),
+                    ),
+
+                    const SizedBox(width: 16),
+
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Camera consent',
+                            style: AppTextStyles.cardTitle,
+                          ),
+
+                          const SizedBox(height: 4),
+
+                          Text(
+                            'Tap to manage access in device settings.',
+                            style: AppTextStyles.small,
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    GestureDetector(
+                      onTap: _openAppSettingsWithWarning,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 14,
+                          vertical: 8,
+                        ),
+                        decoration: BoxDecoration(
+                          color: statusColor.withValues(alpha: 0.15),
+                          borderRadius: BorderRadius.circular(
+                            AppSizes.buttonRadius,
+                          ),
+                        ),
+                        child: Text(
+                          cameraStatusText,
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: statusColor,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              onTap: _openAppSettingsWithWarning,
-            ),
+            ],
           ),
         ),
       ),

@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:posefit_ai/utils/app_colors.dart';
+import 'package:posefit_ai/utils/app_text_styles.dart';
+import 'package:posefit_ai/utils/app_sizes.dart';
+
 import '../../controller/auth_service.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -9,18 +13,39 @@ class SettingsScreen extends StatelessWidget {
   Widget _settingsTile({
     required String title,
     String? subtitle,
+    IconData? icon,
     VoidCallback? onTap,
   }) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
+
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey.shade300),
-        borderRadius: BorderRadius.circular(12),
+        color: AppColors.card,
+        borderRadius: BorderRadius.circular(AppSizes.cardRadius),
       ),
+
       child: ListTile(
-        title: Text(title),
-        subtitle: subtitle != null ? Text(subtitle) : null,
-        trailing: const Icon(Icons.chevron_right),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 18, vertical: 4),
+
+        leading: icon == null ? null : Icon(icon, color: AppColors.aiMint),
+
+        title: Text(
+          title,
+          style: AppTextStyles.body.copyWith(
+            color: AppColors.softText,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+
+        subtitle: subtitle == null
+            ? null
+            : Text(
+                subtitle,
+                style: AppTextStyles.small.copyWith(color: AppColors.secondary),
+              ),
+
+        trailing: const Icon(Icons.chevron_right, color: AppColors.secondary),
+
         onTap: onTap,
       ),
     );
@@ -68,73 +93,96 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Settings')),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            children: [
-              const Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'Settings',
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                ),
-              ),
+      backgroundColor: AppColors.background,
 
-              const SizedBox(height: 16),
+      appBar: AppBar(
+        backgroundColor: AppColors.background,
+        elevation: 0,
+        title: const Text('Settings', style: AppTextStyles.sectionTitle),
+      ),
+
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(20),
+
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text('Preferences', style: AppTextStyles.sectionTitle),
+
+              const SizedBox(height: 18),
 
               _settingsTile(
                 title: 'Camera settings',
+                subtitle: 'Permissions and camera access',
+                icon: Icons.camera_alt_outlined,
                 onTap: () {
                   Navigator.pushNamed(context, '/camera-settings');
                 },
               ),
+
               _settingsTile(
                 title: 'Notification settings',
                 subtitle: 'Not implemented yet',
+                icon: Icons.notifications_none,
               ),
+
               _settingsTile(
                 title: 'Exercise History settings',
                 subtitle: 'Not implemented yet',
+                icon: Icons.history,
               ),
+
               _settingsTile(
                 title: 'Help & Support',
+                subtitle: 'FAQs and support',
+                icon: Icons.help_outline,
                 onTap: () {
                   Navigator.pushNamed(context, '/help-support');
                 },
               ),
 
-              const SizedBox(height: 32),
+              const SizedBox(height: 34),
 
-              const Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'System Info',
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                ),
-              ),
+              const Text('System Info', style: AppTextStyles.sectionTitle),
 
-              const SizedBox(height: 16),
+              const SizedBox(height: 18),
 
               Container(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 20,
                   vertical: 18,
                 ),
+
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey.shade400),
-                  borderRadius: BorderRadius.circular(14),
+                  color: AppColors.card,
+                  borderRadius: BorderRadius.circular(AppSizes.cardRadius),
                 ),
+
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
                   children: [
-                    const Text('App version', style: TextStyle(fontSize: 18)),
+                    Row(
+                      children: [
+                        const Icon(Icons.info_outline, color: AppColors.aiMint),
+
+                        const SizedBox(width: 12),
+
+                        Text(
+                          'App version',
+                          style: AppTextStyles.body.copyWith(
+                            color: AppColors.softText,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
 
                     Text(
                       appVersion,
-                      style: const TextStyle(
-                        fontSize: 18,
+                      style: AppTextStyles.body.copyWith(
+                        color: AppColors.secondary,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -142,14 +190,25 @@ class SettingsScreen extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: 30),
+              const SizedBox(height: 34),
 
               SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+
+                child: ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.redAccent,
+                    foregroundColor: Colors.white,
+                  ),
+
                   onPressed: () => _handleDeleteAccount(context),
-                  child: const Text('Delete Account'),
+
+                  icon: const Icon(Icons.delete_outline),
+
+                  label: const Text(
+                    'Delete Account',
+                    style: AppTextStyles.buttonText,
+                  ),
                 ),
               ),
             ],
