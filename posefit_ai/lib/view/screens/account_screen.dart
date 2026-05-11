@@ -1,8 +1,13 @@
-import 'package:flutter/material.dart';
-import '../../controller/auth_service.dart';
 import 'dart:io';
+import 'package:flutter/material.dart';
+import 'package:posefit_ai/utils/app_colors.dart';
+import 'package:posefit_ai/utils/app_text_styles.dart';
+import 'package:posefit_ai/utils/app_sizes.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../controller/auth_service.dart';
+import '../widgets/app_message_popup.dart';
 
 class AccountScreen extends StatefulWidget {
   final bool forceChangePassword;
@@ -175,38 +180,10 @@ class _AccountScreenState extends State<AccountScreen> {
     final confirmController = TextEditingController();
 
     void showDialogMessage(BuildContext dialogContext, String message) {
-      showDialog(
+      showAppMessagePopup(
         context: dialogContext,
+        message: message,
         barrierDismissible: !forceChangePasswordActive,
-        barrierColor: Colors.transparent,
-        builder: (messageContext) {
-          Future.delayed(const Duration(seconds: 2), () {
-            if (Navigator.canPop(messageContext)) {
-              Navigator.pop(messageContext);
-            }
-          });
-
-          return Center(
-            child: Material(
-              color: Colors.transparent,
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 14,
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.75),
-                  borderRadius: BorderRadius.circular(14),
-                ),
-                child: Text(
-                  message,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.white, fontSize: 15),
-                ),
-              ),
-            ),
-          );
-        },
       );
     }
 
@@ -317,6 +294,8 @@ class _AccountScreenState extends State<AccountScreen> {
                         newPassword: newPassword,
                       );
 
+                      if (!dialogContext.mounted) return;
+
                       if (response['success'] == true) {
                         Navigator.of(dialogContext, rootNavigator: true).pop();
 
@@ -347,18 +326,33 @@ class _AccountScreenState extends State<AccountScreen> {
 
   Widget _profileOptionTile({
     required String title,
+    required IconData icon,
     VoidCallback? onTap,
     Widget? trailing,
   }) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey.shade300),
-        borderRadius: BorderRadius.circular(12),
+        color: AppColors.card,
+        borderRadius: BorderRadius.circular(AppSizes.cardRadius),
       ),
       child: ListTile(
-        title: Text(title),
-        trailing: trailing ?? const Icon(Icons.chevron_right),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 18, vertical: 4),
+
+        leading: Icon(icon, color: AppColors.aiMint),
+
+        title: Text(
+          title,
+          style: AppTextStyles.body.copyWith(
+            color: AppColors.softText,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+
+        trailing:
+            trailing ??
+            const Icon(Icons.chevron_right, color: AppColors.secondary),
+
         onTap: onTap,
       ),
     );
@@ -367,85 +361,127 @@ class _AccountScreenState extends State<AccountScreen> {
   @override
   Widget build(BuildContext context) {
     if (isLoading) {
-      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+      return const Scaffold(
+        backgroundColor: AppColors.background,
+        body: Center(
+          child: CircularProgressIndicator(color: AppColors.primaryGreen),
+        ),
+      );
     }
 
     return Scaffold(
+      backgroundColor: AppColors.background,
+
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.fromLTRB(20, 8, 20, 20),
+
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Text(
-                'Profile',
-                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Text('Profile', style: AppTextStyles.heading),
               ),
-              const SizedBox(height: 24),
+
+              const SizedBox(height: 28),
+
               Stack(
                 children: [
-                  CircleAvatar(
-                    radius: 80,
-                    backgroundColor: Colors.grey.shade300,
-                    backgroundImage: profileImagePath != null
-                        ? FileImage(File(profileImagePath!))
-                        : null,
-                    child: profileImagePath == null
-                        ? const Icon(Icons.person, size: 60)
-                        : null,
+                  Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: AppColors.primaryGreen.withValues(alpha: 0.35),
+                        width: 2,
+                      ),
+                    ),
+                    child: CircleAvatar(
+                      radius: 78,
+                      backgroundColor: AppColors.card,
+                      backgroundImage: profileImagePath != null
+                          ? FileImage(File(profileImagePath!))
+                          : null,
+                      child: profileImagePath == null
+                          ? const Icon(
+                              Icons.person,
+                              size: 68,
+                              color: AppColors.aiMint,
+                            )
+                          : null,
+                    ),
                   ),
 
                   Positioned(
-                    bottom: 0,
-                    right: 0,
+                    bottom: 4,
+                    right: 4,
                     child: GestureDetector(
                       onTap: _pickProfileImage,
                       child: Container(
-                        padding: const EdgeInsets.all(6),
+                        padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: AppColors.primaryGreen,
                           shape: BoxShape.circle,
-                          border: Border.all(color: Colors.grey.shade400),
+                          border: Border.all(
+                            color: AppColors.background,
+                            width: 2,
+                          ),
                         ),
-                        child: const Icon(Icons.edit, size: 20),
+                        child: const Icon(
+                          Icons.edit,
+                          size: 18,
+                          color: AppColors.background,
+                        ),
                       ),
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 16),
-              Text(email, style: const TextStyle(fontSize: 16)),
-              const SizedBox(height: 8),
+
+              const SizedBox(height: 20),
+
+              Text(username, style: AppTextStyles.sectionTitle),
+
+              const SizedBox(height: 6),
+
               Text(
-                username,
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+                email,
+                style: AppTextStyles.body.copyWith(color: AppColors.secondary),
               ),
-              const SizedBox(height: 32),
+
+              const SizedBox(height: 34),
+
               _profileOptionTile(
                 title: 'Change username',
+                icon: Icons.person_outline,
                 onTap: _showChangeUsernameDialog,
               ),
+
               _profileOptionTile(
                 title: 'Change password',
+                icon: Icons.lock_outline,
                 onTap: _showChangePasswordDialog,
               ),
+
               _profileOptionTile(
                 title: 'Settings',
+                icon: Icons.settings_outlined,
                 onTap: () {
                   Navigator.pushNamed(context, '/settings');
                 },
               ),
-              const SizedBox(height: 20),
+
+              const SizedBox(height: 24),
+
               SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(
+                child: ElevatedButton.icon(
                   onPressed: handleLogout,
-                  child: const Text('Log Out'),
+                  icon: const Icon(Icons.logout),
+                  label: const Text('Log Out', style: AppTextStyles.buttonText),
                 ),
               ),
-              const SizedBox(height: 2),
             ],
           ),
         ),

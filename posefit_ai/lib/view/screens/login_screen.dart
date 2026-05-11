@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:posefit_ai/utils/app_colors.dart';
+import 'package:posefit_ai/utils/app_text_styles.dart';
+import 'package:posefit_ai/utils/app_sizes.dart';
+
 import '../../controller/auth_service.dart';
+import '../widgets/dialog_text_field.dart';
+import '../widgets/app_message_popup.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -10,7 +16,6 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
-
   final TextEditingController passwordController = TextEditingController();
 
   bool isLoading = false;
@@ -18,14 +23,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future<void> handleLogin() async {
     final email = emailController.text.trim();
-
     final password = passwordController.text.trim();
 
     if (email.isEmpty || password.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please enter email and password.')),
+      showAppMessagePopup(
+        context: context,
+        message: 'Please enter email and password.',
+        isError: true,
       );
-
       return;
     }
 
@@ -49,12 +54,15 @@ class _LoginScreenState extends State<LoginScreen> {
             barrierDismissible: false,
             builder: (context) {
               return AlertDialog(
-                title: const Text('Password Reset Required'),
-
+                backgroundColor: AppColors.card,
+                title: const Text(
+                  'Password Reset Required',
+                  style: AppTextStyles.sectionTitle,
+                ),
                 content: const Text(
                   'You must change your password before continuing.',
+                  style: AppTextStyles.body,
                 ),
-
                 actions: [
                   ElevatedButton(
                     onPressed: () {
@@ -67,16 +75,20 @@ class _LoginScreenState extends State<LoginScreen> {
                         arguments: {'tabIndex': 4, 'forceChangePassword': true},
                       );
                     },
-
-                    child: const Text('Change Password'),
+                    child: const Text(
+                      'Change Password',
+                      style: AppTextStyles.buttonText,
+                    ),
                   ),
                 ],
               );
             },
           );
         } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(result['message'] ?? 'Login successful.')),
+          showAppMessagePopup(
+            context: context,
+            message: result['message'] ?? 'Login successful.',
+            isSuccess: true,
           );
 
           Navigator.pushNamedAndRemoveUntil(
@@ -86,16 +98,20 @@ class _LoginScreenState extends State<LoginScreen> {
           );
         }
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(result['message'] ?? 'Login failed.')),
+        showAppMessagePopup(
+          context: context,
+          message: result['message'] ?? 'Login failed.',
+          isError: true,
         );
       }
     } catch (e) {
       if (!mounted) return;
 
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('Login failed: $e')));
+      showAppMessagePopup(
+        context: context,
+        message: 'Login failed: $e',
+        isError: true,
+      );
     } finally {
       if (mounted) {
         setState(() {
@@ -103,6 +119,82 @@ class _LoginScreenState extends State<LoginScreen> {
         });
       }
     }
+  }
+
+  Future<void> _showForgotPasswordDialog() async {
+    final forgotEmailController = TextEditingController();
+
+    await showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          backgroundColor: AppColors.background,
+          title: const Text(
+            'Forgot Password',
+            style: AppTextStyles.sectionTitle,
+          ),
+          content: DialogTextField(
+            controller: forgotEmailController,
+            labelText: 'Email',
+            prefixIcon: Icons.email_outlined,
+            keyboardType: TextInputType.emailAddress,
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text(
+                'Cancel',
+                style: TextStyle(color: AppColors.secondary),
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                final email = forgotEmailController.text.trim();
+
+                if (email.isEmpty) {
+                  showAppMessagePopup(
+                    context: context,
+                    message: 'Please enter your email.',
+                    isError: true,
+                  );
+                  return;
+                }
+
+                Navigator.pop(context);
+
+                if (!mounted) return;
+
+                try {
+                  final result = await AuthService.forgotPassword(email: email);
+
+                  if (!mounted) return;
+
+                  showAppMessagePopup(
+                    context: this.context,
+                    message: result['message'] ?? 'Request completed.',
+                    isSuccess: result['success'] == true,
+                    isError: result['success'] != true,
+                  );
+                } catch (e) {
+                  if (!mounted) return;
+
+                  showAppMessagePopup(
+                    context: this.context,
+                    message: 'Error: $e',
+                    isError: true,
+                  );
+                }
+              },
+              child: const Text('Send', style: AppTextStyles.buttonText),
+            ),
+          ],
+        );
+      },
+    );
+
+    forgotEmailController.dispose();
   }
 
   @override
@@ -116,21 +208,37 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Log In')),
+      backgroundColor: AppColors.background,
+
+      appBar: AppBar(
+        backgroundColor: AppColors.background,
+        elevation: 0,
+        iconTheme: const IconThemeData(color: AppColors.softText),
+        title: const Text('Log In', style: AppTextStyles.sectionTitle),
+      ),
 
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(AppSizes.screenPadding),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              TextField(
-                controller: emailController,
+              const Text('Welcome Back', style: AppTextStyles.heading),
 
-                decoration: const InputDecoration(
-                  labelText: 'Email',
-                  border: OutlineInputBorder(),
-                ),
+              const SizedBox(height: 8),
+
+              const Text(
+                'Log in to continue tracking your workouts.',
+                style: AppTextStyles.body,
+              ),
+
+              const SizedBox(height: 32),
+
+              DialogTextField(
+                controller: emailController,
+                labelText: 'Email',
+                prefixIcon: Icons.email_outlined,
+                keyboardType: TextInputType.emailAddress,
               ),
 
               const SizedBox(height: 16),
@@ -138,24 +246,40 @@ class _LoginScreenState extends State<LoginScreen> {
               TextField(
                 controller: passwordController,
                 obscureText: _obscurePassword,
-
+                style: AppTextStyles.body,
+                cursorColor: AppColors.primaryGreen,
                 decoration: InputDecoration(
                   labelText: 'Password',
-
-                  border: const OutlineInputBorder(),
-
+                  labelStyle: AppTextStyles.small,
+                  prefixIcon: const Icon(
+                    Icons.lock_outline,
+                    color: AppColors.aiMint,
+                  ),
                   suffixIcon: IconButton(
                     icon: Icon(
                       _obscurePassword
                           ? Icons.visibility_off_outlined
                           : Icons.visibility_outlined,
+                      color: AppColors.secondary,
                     ),
-
                     onPressed: () {
                       setState(() {
                         _obscurePassword = !_obscurePassword;
                       });
                     },
+                  ),
+                  filled: true,
+                  fillColor: AppColors.card,
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(AppSizes.buttonRadius),
+                    borderSide: BorderSide.none,
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(AppSizes.buttonRadius),
+                    borderSide: const BorderSide(
+                      color: AppColors.primaryGreen,
+                      width: 1.5,
+                    ),
                   ),
                 ),
               ),
@@ -164,141 +288,60 @@ class _LoginScreenState extends State<LoginScreen> {
 
               Align(
                 alignment: Alignment.centerRight,
-
                 child: GestureDetector(
-                  onTap: () async {
-                    final forgotEmailController = TextEditingController();
-
-                    await showDialog(
-                      context: context,
-
-                      builder: (context) {
-                        return AlertDialog(
-                          title: const Text('Forgot Password'),
-
-                          content: TextField(
-                            controller: forgotEmailController,
-
-                            decoration: const InputDecoration(
-                              labelText: 'Enter your email',
-                              border: OutlineInputBorder(),
-                            ),
-                          ),
-
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-
-                              child: const Text('Cancel'),
-                            ),
-
-                            ElevatedButton(
-                              onPressed: () async {
-                                final email = forgotEmailController.text.trim();
-
-                                if (email.isEmpty) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                      content: Text('Please enter your email.'),
-                                    ),
-                                  );
-
-                                  return;
-                                }
-
-                                Navigator.pop(context);
-
-                                if (!mounted) return;
-
-                                try {
-                                  final result =
-                                      await AuthService.forgotPassword(
-                                        email: email,
-                                      );
-
-                                  if (!mounted) return;
-
-                                  Future.delayed(Duration.zero, () {
-                                    ScaffoldMessenger.of(
-                                      this.context,
-                                    ).showSnackBar(
-                                      SnackBar(
-                                        content: Text(result['message']),
-                                      ),
-                                    );
-                                  });
-                                } catch (e) {
-                                  if (!mounted) return;
-
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(content: Text('Error: $e')),
-                                  );
-                                }
-                              },
-
-                              child: const Text('Send'),
-                            ),
-                          ],
-                        );
-                      },
-                    );
-                  },
-
+                  onTap: _showForgotPasswordDialog,
                   child: const Text(
                     'Forgot Password?',
-
                     style: TextStyle(
-                      color: Colors.blue,
+                      color: AppColors.primaryGreen,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
               ),
 
-              const SizedBox(height: 24),
+              const SizedBox(height: 28),
 
               SizedBox(
                 width: double.infinity,
-                height: 50,
-
+                height: AppSizes.buttonHeight,
                 child: ElevatedButton(
                   onPressed: isLoading ? null : handleLogin,
-
                   child: isLoading
-                      ? const CircularProgressIndicator(color: Colors.white)
-                      : const Text('Log In'),
+                      ? const SizedBox(
+                          width: 18,
+                          height: 18,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            color: AppColors.background,
+                          ),
+                        )
+                      : const Text('Log In', style: AppTextStyles.buttonText),
                 ),
               ),
 
-              const SizedBox(height: 20),
+              const SizedBox(height: 22),
 
-              Padding(
-                padding: const EdgeInsets.only(left: 100),
-
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-
-                  children: [
-                    const Text("Don't have an account? "),
-
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(context, '/signup');
-                      },
-
-                      child: const Text(
-                        'Sign Up',
-
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold,
-                        ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    "Don't have an account? ",
+                    style: AppTextStyles.body,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/signup');
+                    },
+                    child: const Text(
+                      'Sign Up',
+                      style: TextStyle(
+                        color: AppColors.primaryGreen,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ],
           ),

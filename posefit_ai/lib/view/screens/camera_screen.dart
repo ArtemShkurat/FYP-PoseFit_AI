@@ -2,6 +2,10 @@ import 'dart:typed_data';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:posefit_ai/utils/app_colors.dart';
+import 'package:posefit_ai/utils/app_text_styles.dart';
+import 'package:posefit_ai/utils/app_sizes.dart';
+
 import '../../controller/pose_service.dart';
 import '../../controller/pose_utils.dart';
 import '../../model/pose_result.dart';
@@ -130,8 +134,8 @@ class _CameraScreenState extends State<CameraScreen>
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
           decoration: BoxDecoration(
             color: isSelected
-                ? Colors.white.withOpacity(0.9)
-                : Colors.black.withOpacity(0.45),
+                ? Colors.white.withValues(alpha: 0.9)
+                : Colors.black.withValues(alpha: 0.45),
             borderRadius: BorderRadius.circular(20),
           ),
           child: Text(
@@ -885,19 +889,35 @@ class _CameraScreenState extends State<CameraScreen>
     return Positioned.fill(
       child: Center(
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+          margin: const EdgeInsets.symmetric(horizontal: 24),
+          padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 16),
           decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.5), // translucent
-            borderRadius: BorderRadius.circular(16),
-          ),
-          child: const Text(
-            'Start performing an exercise',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
+            color: AppColors.card.withValues(alpha: 0.92),
+            borderRadius: BorderRadius.circular(AppSizes.cardRadius),
+            border: Border.all(
+              color: AppColors.primaryGreen.withValues(alpha: 0.35),
+              width: 1.2,
             ),
+          ),
+          child: const Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.fitness_center, color: AppColors.aiMint, size: 22),
+
+              SizedBox(width: 12),
+
+              Flexible(
+                child: Text(
+                  'Adjust your position to improve detection.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: AppColors.softText,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
@@ -907,41 +927,58 @@ class _CameraScreenState extends State<CameraScreen>
   @override
   Widget build(BuildContext context) {
     if (_isCheckingPermission) {
-      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+      return const Scaffold(
+        backgroundColor: AppColors.background,
+        body: Center(
+          child: CircularProgressIndicator(color: AppColors.primaryGreen),
+        ),
+      );
     }
 
     if (!_hasPermission) {
       return Scaffold(
+        backgroundColor: AppColors.background,
         body: SafeArea(
           child: Center(
             child: Padding(
-              padding: const EdgeInsets.all(24),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(
-                    Icons.camera_alt_outlined,
-                    size: 64,
-                    color: Colors.grey,
-                  ),
-                  const SizedBox(height: 20),
-                  const Text(
-                    'Camera access is not enabled.',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 12),
-                  const Text(
-                    'To change camera access, go to Settings.',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  const SizedBox(height: 24),
-                  ElevatedButton(
-                    onPressed: _openAppSettings,
-                    child: const Text('Open Settings'),
-                  ),
-                ],
+              padding: const EdgeInsets.all(AppSizes.screenPadding),
+              child: Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(24),
+                decoration: BoxDecoration(
+                  color: AppColors.card,
+                  borderRadius: BorderRadius.circular(AppSizes.cardRadius),
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(
+                      Icons.camera_alt_outlined,
+                      size: 64,
+                      color: AppColors.aiMint,
+                    ),
+                    const SizedBox(height: 20),
+                    const Text(
+                      'Camera access is not enabled.',
+                      textAlign: TextAlign.center,
+                      style: AppTextStyles.sectionTitle,
+                    ),
+                    const SizedBox(height: 12),
+                    const Text(
+                      'To change camera access, go to Settings.',
+                      textAlign: TextAlign.center,
+                      style: AppTextStyles.body,
+                    ),
+                    const SizedBox(height: 24),
+                    ElevatedButton(
+                      onPressed: _openAppSettings,
+                      child: const Text(
+                        'Open Settings',
+                        style: AppTextStyles.buttonText,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -951,20 +988,31 @@ class _CameraScreenState extends State<CameraScreen>
 
     if (_errorMessage != null) {
       return Scaffold(
+        backgroundColor: AppColors.background,
         body: Center(
           child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Text(_errorMessage!, textAlign: TextAlign.center),
+            padding: const EdgeInsets.all(AppSizes.screenPadding),
+            child: Text(
+              _errorMessage!,
+              textAlign: TextAlign.center,
+              style: AppTextStyles.body,
+            ),
           ),
         ),
       );
     }
 
     if (_controller == null || _initializeControllerFuture == null) {
-      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+      return const Scaffold(
+        backgroundColor: AppColors.background,
+        body: Center(
+          child: CircularProgressIndicator(color: AppColors.primaryGreen),
+        ),
+      );
     }
 
     return Scaffold(
+      backgroundColor: AppColors.background,
       body: FutureBuilder<void>(
         future: _initializeControllerFuture,
         builder: (context, snapshot) {
@@ -979,8 +1027,9 @@ class _CameraScreenState extends State<CameraScreen>
                   },
                   onScaleUpdate: (details) async {
                     if (_controller == null ||
-                        !_controller!.value.isInitialized)
+                        !_controller!.value.isInitialized) {
                       return;
+                    }
 
                     final zoom = (_baseZoom * details.scale)
                         .clamp(_minZoom, _maxZoom)
@@ -1013,13 +1062,13 @@ class _CameraScreenState extends State<CameraScreen>
                     width: 48,
                     height: 48,
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.85),
+                      color: AppColors.card.withValues(alpha: 0.9),
                       shape: BoxShape.circle,
                     ),
                     child: IconButton(
                       onPressed: _switchCamera,
                       icon: const Icon(Icons.flip_camera_ios),
-                      color: Colors.black87,
+                      color: AppColors.aiMint,
                     ),
                   ),
                 ),
@@ -1027,22 +1076,19 @@ class _CameraScreenState extends State<CameraScreen>
                 Positioned(
                   top: 50,
                   right: 20,
-                  child: Column(
-                    children: [
-                      FloatingActionButton.small(
-                        heroTag: 'camera_settings',
-                        backgroundColor: Colors.black.withOpacity(0.5),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => const CameraSettingsScreen(),
-                            ),
-                          );
-                        },
-                        child: const Icon(Icons.settings),
-                      ),
-                    ],
+                  child: FloatingActionButton.small(
+                    heroTag: 'camera_settings',
+                    backgroundColor: AppColors.card.withValues(alpha: 0.9),
+                    elevation: 0,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const CameraSettingsScreen(),
+                        ),
+                      );
+                    },
+                    child: const Icon(Icons.settings, color: AppColors.aiMint),
                   ),
                 ),
 
@@ -1055,14 +1101,14 @@ class _CameraScreenState extends State<CameraScreen>
                       width: 36,
                       height: 36,
                       decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.4),
+                        color: AppColors.card.withValues(alpha: 0.9),
                         shape: BoxShape.circle,
                       ),
                       child: const Center(
                         child: Text(
                           '?',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: AppColors.aiMint,
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
                           ),
@@ -1079,8 +1125,10 @@ class _CameraScreenState extends State<CameraScreen>
                 //   child: Container(
                 //     padding: const EdgeInsets.all(16),
                 //     decoration: BoxDecoration(
-                //       color: Colors.black.withOpacity(0.6),
-                //       borderRadius: BorderRadius.circular(16),
+                //       color: AppColors.card.withValues(alpha: 0.9),
+                //       borderRadius: BorderRadius.circular(
+                //         AppSizes.buttonRadius,
+                //       ),
                 //     ),
                 //     child: Column(
                 //       crossAxisAlignment: CrossAxisAlignment.center,
@@ -1089,19 +1137,13 @@ class _CameraScreenState extends State<CameraScreen>
                 //           _isCollectingData
                 //               ? 'Data Samples Recording'
                 //               : 'Exercise Detection',
-                //           style: TextStyle(
-                //             color: Colors.white,
-                //             fontSize: 18,
-                //             fontWeight: FontWeight.bold,
-                //           ),
+                //           style: AppTextStyles.sectionTitle,
                 //         ),
                 //         const SizedBox(height: 10),
                 //         Text(
                 //           _poseStatusText,
                 //           textAlign: TextAlign.center,
-                //           style: const TextStyle(
-                //             color: Colors.white,
-                //             fontSize: 16,
+                //           style: AppTextStyles.body.copyWith(
                 //             height: 1.4,
                 //           ),
                 //         ),
@@ -1117,19 +1159,18 @@ class _CameraScreenState extends State<CameraScreen>
                 //   child: Container(
                 //     padding: const EdgeInsets.symmetric(horizontal: 16),
                 //     decoration: BoxDecoration(
-                //       color: Colors.black.withOpacity(0.6),
-                //       borderRadius: BorderRadius.circular(16),
+                //       color: AppColors.card.withValues(alpha: 0.9),
+                //       borderRadius: BorderRadius.circular(
+                //         AppSizes.buttonRadius,
+                //       ),
                 //     ),
                 //     child: DropdownButtonHideUnderline(
                 //       child: DropdownButton<ExerciseMode>(
                 //         value: _selectedExercise,
                 //         isExpanded: true,
-                //         dropdownColor: Colors.black87,
-                //         iconEnabledColor: Colors.white,
-                //         style: const TextStyle(
-                //           color: Colors.white,
-                //           fontSize: 16,
-                //         ),
+                //         dropdownColor: AppColors.card,
+                //         iconEnabledColor: AppColors.aiMint,
+                //         style: AppTextStyles.body,
                 //         items: const [
                 //           DropdownMenuItem(
                 //             value: ExerciseMode.bicepsCurl,
@@ -1157,11 +1198,17 @@ class _CameraScreenState extends State<CameraScreen>
                     child: GestureDetector(
                       onTap: _toggleRecognition,
                       child: Container(
-                        width: 60,
-                        height: 60,
+                        width: 64,
+                        height: 64,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: Colors.white.withOpacity(0.9),
+                          color: AppColors.softText.withValues(alpha: 0.95),
+                          border: Border.all(
+                            color: _isRecognizingExercise
+                                ? Colors.red
+                                : AppColors.primaryGreen,
+                            width: 3,
+                          ),
                         ),
                         child: Center(
                           child: Container(
@@ -1170,7 +1217,7 @@ class _CameraScreenState extends State<CameraScreen>
                             decoration: BoxDecoration(
                               color: _isRecognizingExercise
                                   ? Colors.red
-                                  : Colors.red,
+                                  : AppColors.primaryGreen,
                               shape: _isRecognizingExercise
                                   ? BoxShape.rectangle
                                   : BoxShape.circle,
@@ -1187,13 +1234,14 @@ class _CameraScreenState extends State<CameraScreen>
 
                 // SizedBox(
                 //   width: double.infinity,
-                //   height: 56,
+                //   height: AppSizes.buttonHeight,
                 //   child: ElevatedButton(
                 //     onPressed: _toggleDataRecording,
                 //     child: Text(
                 //       _isCollectingData
                 //           ? 'Stop Data Recording'
                 //           : 'Start Data Recording',
+                //       style: AppTextStyles.buttonText,
                 //     ),
                 //   ),
                 // ),
@@ -1202,13 +1250,24 @@ class _CameraScreenState extends State<CameraScreen>
 
                 // SizedBox(
                 //   width: double.infinity,
-                //   height: 56,
+                //   height: AppSizes.buttonHeight,
                 //   child: OutlinedButton(
                 //     onPressed: () {
                 //       setState(() {
                 //         _resetCurrentExerciseCounter();
                 //       });
                 //     },
+                //     style: OutlinedButton.styleFrom(
+                //       foregroundColor: AppColors.primaryGreen,
+                //       side: const BorderSide(
+                //         color: AppColors.primaryGreen,
+                //       ),
+                //       shape: RoundedRectangleBorder(
+                //         borderRadius: BorderRadius.circular(
+                //           AppSizes.buttonRadius,
+                //         ),
+                //       ),
+                //     ),
                 //     child: const Text('Reset Reps'),
                 //   ),
                 // ),
@@ -1221,7 +1280,9 @@ class _CameraScreenState extends State<CameraScreen>
             );
           }
 
-          return const Center(child: CircularProgressIndicator());
+          return const Center(
+            child: CircularProgressIndicator(color: AppColors.primaryGreen),
+          );
         },
       ),
     );

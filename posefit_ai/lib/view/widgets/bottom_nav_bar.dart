@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:posefit_ai/utils/app_colors.dart';
 
 class BottomNavBar extends StatelessWidget {
   final int currentIndex;
@@ -15,20 +16,37 @@ class BottomNavBar extends StatelessWidget {
     return BottomNavigationBar(
       currentIndex: currentIndex,
       type: BottomNavigationBarType.fixed,
-      selectedItemColor: Colors.blue,
-      unselectedItemColor: Colors.black54,
+
+      backgroundColor: AppColors.card,
+
+      selectedItemColor: AppColors.primaryGreen,
+
+      unselectedItemColor: AppColors.secondary,
+
+      selectedLabelStyle: const TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 12,
+      ),
+
+      unselectedLabelStyle: const TextStyle(fontSize: 12),
+
       onTap: onTap,
+
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+
         BottomNavigationBarItem(
           icon: Icon(Icons.fitness_center),
           label: 'Exercises',
         ),
+
         BottomNavigationBarItem(
           icon: Icon(Icons.photo_camera),
           label: 'Camera',
         ),
+
         BottomNavigationBarItem(icon: Icon(Icons.receipt_long), label: 'Logs'),
+
         BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Account'),
       ],
     );

@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:posefit_ai/utils/app_colors.dart';
+import 'package:posefit_ai/utils/app_text_styles.dart';
+import 'package:posefit_ai/utils/app_sizes.dart';
+
 import '../../controller/auth_service.dart';
 import '../../controller/workout_log_service.dart';
 import '../../model/workout_log.dart';
 import '../../utils/exercise_image_helper.dart';
+import '../widgets/home_option_card.dart';
 
 class HomeScreen extends StatefulWidget {
   final void Function(int, {bool openAdd})? onNavigateToTab;
@@ -64,116 +69,200 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background,
       body: SafeArea(
         child: isLoading
-            ? const Center(child: CircularProgressIndicator())
-            : Padding(
-                padding: const EdgeInsets.all(16),
+            ? const Center(
+                child: CircularProgressIndicator(color: AppColors.primaryGreen),
+              )
+            : SingleChildScrollView(
+                padding: const EdgeInsets.all(AppSizes.screenPadding),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: 2),
-                    Text(
-                      'Hi, $username!',
-                      style: const TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    const Text(
-                      'Ready for your workout?',
-                      style: TextStyle(fontSize: 16, color: Colors.black87),
-                    ),
-                    const SizedBox(height: 24),
+                    Text('Hi, $username!', style: AppTextStyles.heading),
 
-                    SizedBox(
+                    const SizedBox(height: 8),
+
+                    const Text(
+                      'Ready to improve your form today?',
+                      style: AppTextStyles.body,
+                    ),
+
+                    const SizedBox(height: AppSizes.sectionSpacing),
+
+                    Container(
                       width: double.infinity,
-                      height: 56,
-                      child: ElevatedButton.icon(
-                        onPressed: () {
-                          widget.onNavigateToTab?.call(2);
-                        },
-                        icon: const Icon(Icons.photo_camera),
-                        label: const Text(
-                          'Start Exercise Detection',
-                          style: TextStyle(fontSize: 16),
+                      padding: const EdgeInsets.all(22),
+                      decoration: BoxDecoration(
+                        color: AppColors.card,
+                        borderRadius: BorderRadius.circular(
+                          AppSizes.cardRadius,
                         ),
                       ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Start AI Exercise Detection',
+                            style: AppTextStyles.sectionTitle,
+                          ),
+
+                          const SizedBox(height: 8),
+
+                          const Text(
+                            'Use your camera to recognise exercises and track your workout.',
+                            style: AppTextStyles.cardSubtitle,
+                          ),
+
+                          const SizedBox(height: 20),
+
+                          SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton.icon(
+                              onPressed: () {
+                                widget.onNavigateToTab?.call(2);
+                              },
+                              icon: const Icon(Icons.camera_alt),
+                              label: const Text(
+                                'Open Camera',
+                                style: AppTextStyles.buttonText,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
 
-                    const SizedBox(height: 22),
+                    const SizedBox(height: AppSizes.sectionSpacing),
+
+                    const Text(
+                      'Quick Access',
+                      style: AppTextStyles.sectionTitle,
+                    ),
+
+                    const SizedBox(height: AppSizes.itemSpacing),
 
                     Row(
                       children: [
                         Expanded(
-                          child: _HomeOptionCard(
+                          child: HomeOptionCard(
                             icon: Icons.fitness_center,
-                            label: 'Browse\nExercises',
+                            label: 'Exercises',
+                            color: AppColors.aiMint,
                             onTap: () {
                               widget.onNavigateToTab?.call(1);
                             },
                           ),
                         ),
-                        const SizedBox(width: 12),
+
+                        const SizedBox(width: AppSizes.itemSpacing),
+
                         Expanded(
-                          child: _HomeOptionCard(
+                          child: HomeOptionCard(
                             icon: Icons.history,
-                            label: 'Workout\nHistory',
+                            label: 'Logs',
+                            color: AppColors.aiMint,
                             onTap: () {
                               widget.onNavigateToTab?.call(3);
-                            },
-                          ),
-                        ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: _HomeOptionCard(
-                            icon: Icons.edit_note,
-                            label: 'Manual\nLog',
-                            onTap: () {
-                              widget.onNavigateToTab?.call(3, openAdd: true);
                             },
                           ),
                         ),
                       ],
                     ),
 
-                    const SizedBox(height: 18),
+                    const SizedBox(height: AppSizes.itemSpacing),
+
+                    Row(
+                      children: [
+                        Expanded(
+                          child: HomeOptionCard(
+                            icon: Icons.edit_note,
+                            label: 'Manual Log',
+                            color: AppColors.aiMint,
+                            onTap: () {
+                              widget.onNavigateToTab?.call(3, openAdd: true);
+                            },
+                          ),
+                        ),
+
+                        const SizedBox(width: AppSizes.itemSpacing),
+
+                        Expanded(
+                          child: HomeOptionCard(
+                            icon: Icons.person,
+                            label: 'Account',
+                            color: AppColors.aiMint,
+                            onTap: () {
+                              widget.onNavigateToTab?.call(4);
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    const SizedBox(height: AppSizes.sectionSpacing),
 
                     const Text(
                       'Recent Workouts',
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: AppTextStyles.sectionTitle,
                     ),
 
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 12),
 
                     if (isLoadingLatestLogs)
-                      const Center(child: CircularProgressIndicator())
+                      const Center(
+                        child: CircularProgressIndicator(
+                          color: AppColors.primaryGreen,
+                        ),
+                      )
                     else if (latestLogs.isEmpty)
-                      const Text('No exercises logged yet.')
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(18),
+                        decoration: BoxDecoration(
+                          color: AppColors.card,
+                          borderRadius: BorderRadius.circular(
+                            AppSizes.cardRadius,
+                          ),
+                        ),
+                        child: const Text(
+                          'No exercises logged yet.',
+                          style: AppTextStyles.body,
+                        ),
+                      )
                     else
                       Column(
                         children: latestLogs.map((log) {
                           return Container(
-                            margin: const EdgeInsets.only(bottom: 10),
+                            margin: const EdgeInsets.only(bottom: 12),
                             padding: const EdgeInsets.all(14),
                             decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey.shade400),
-                              borderRadius: BorderRadius.circular(12),
+                              color: AppColors.card,
+                              borderRadius: BorderRadius.circular(
+                                AppSizes.cardRadius,
+                              ),
                             ),
                             child: Row(
                               children: [
-                                Image.asset(
-                                  ExerciseImageHelper.getImagePath(
-                                    log.exerciseName,
+                                Container(
+                                  width: 52,
+                                  height: 52,
+                                  padding: const EdgeInsets.all(6),
+                                  decoration: BoxDecoration(
+                                    color: AppColors.background.withValues(
+                                      alpha: 0.45,
+                                    ),
+                                    borderRadius: BorderRadius.circular(14),
                                   ),
-                                  width: 44,
-                                  height: 44,
-                                  fit: BoxFit.contain,
+                                  child: Image.asset(
+                                    ExerciseImageHelper.getImagePath(
+                                      log.exerciseName,
+                                    ),
+                                    fit: BoxFit.contain,
+                                  ),
                                 ),
+
                                 const SizedBox(width: 12),
 
                                 Expanded(
@@ -186,10 +275,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           Expanded(
                                             child: Text(
                                               '${log.exerciseName} - ${log.weightUnit == 'bw' ? 'bodyweight' : '${log.weight.toStringAsFixed(0)}${log.weightUnit}'}',
-                                              style: const TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                              style: AppTextStyles.cardTitle,
                                             ),
                                           ),
 
@@ -200,19 +286,19 @@ class _HomeScreenState extends State<HomeScreen> {
                                               ),
                                               padding:
                                                   const EdgeInsets.symmetric(
-                                                    horizontal: 6,
-                                                    vertical: 2,
+                                                    horizontal: 7,
+                                                    vertical: 3,
                                                   ),
                                               decoration: BoxDecoration(
-                                                color: Colors.green,
+                                                color: AppColors.primaryGreen,
                                                 borderRadius:
-                                                    BorderRadius.circular(6),
+                                                    BorderRadius.circular(8),
                                               ),
                                               child: const Text(
                                                 'PR',
                                                 style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 12,
+                                                  color: AppColors.background,
+                                                  fontSize: 11,
                                                   fontWeight: FontWeight.bold,
                                                 ),
                                               ),
@@ -220,20 +306,21 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ],
                                       ),
 
-                                      const SizedBox(height: 4),
+                                      const SizedBox(height: 5),
 
                                       Text(
                                         '${log.setsCount} x ${log.repsCount} reps - ${log.logDate}',
-                                        style: const TextStyle(
-                                          color: Colors.black54,
-                                        ),
+                                        style: AppTextStyles.small,
                                       ),
                                     ],
                                   ),
                                 ),
 
                                 IconButton(
-                                  icon: const Icon(Icons.chevron_right),
+                                  icon: const Icon(
+                                    Icons.chevron_right,
+                                    color: AppColors.softText,
+                                  ),
                                   onPressed: () {
                                     widget.onOpenLog(log);
                                   },
@@ -246,45 +333,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ),
-      ),
-    );
-  }
-}
-
-class _HomeOptionCard extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final VoidCallback onTap;
-
-  const _HomeOptionCard({
-    required this.icon,
-    required this.label,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(12),
-      child: Container(
-        height: 110,
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey.shade400),
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(icon, size: 32),
-            const SizedBox(height: 8),
-            Text(
-              label,
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 13),
-            ),
-          ],
-        ),
       ),
     );
   }

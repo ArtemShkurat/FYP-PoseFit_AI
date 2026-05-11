@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:posefit_ai/utils/app_colors.dart';
+import 'package:posefit_ai/utils/app_text_styles.dart';
+import 'package:posefit_ai/utils/app_sizes.dart';
+
 import '../../controller/exercise_service.dart';
 import '../../model/exercise.dart';
 import '../../utils/exercise_image_helper.dart';
+import '../widgets/search_field.dart';
+import '../widgets/exercise_list_tile.dart';
 
 class ExercisesScreen extends StatefulWidget {
   const ExercisesScreen({super.key});
@@ -52,6 +58,7 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
         .map((exercise) => exercise.category)
         .toSet()
         .toList();
+
     categorySet.sort();
 
     return ['All', ...categorySet];
@@ -83,22 +90,24 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
   @override
   Widget build(BuildContext context) {
     if (isLoading) {
-      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+      return const Scaffold(
+        backgroundColor: AppColors.background,
+        body: Center(
+          child: CircularProgressIndicator(color: AppColors.primaryGreen),
+        ),
+      );
     }
 
     if (errorMessage != null) {
       return Scaffold(
+        backgroundColor: AppColors.background,
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: const Text('Exercises'),
+          title: const Text('Exercises', style: AppTextStyles.sectionTitle),
         ),
-        body: Center(child: Text(errorMessage!)),
+        body: Center(child: Text(errorMessage!, style: AppTextStyles.body)),
       );
     }
-
-    // if (selectedExercise != null) {
-    //   return _exerciseDetailsScreen();
-    // }
 
     if (selectedCategory.isNotEmpty) {
       return _exerciseListScreen();
@@ -123,54 +132,55 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
     final isSearching = searchQuery.trim().isNotEmpty;
 
     return Scaffold(
+      backgroundColor: AppColors.background,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         toolbarHeight: 0,
         elevation: 0,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(AppSizes.screenPadding),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextField(
+            const Text('Exercises', style: AppTextStyles.heading),
+
+            const SizedBox(height: 8),
+
+            const Text(
+              'Browse exercises by muscle group or search directly.',
+              style: AppTextStyles.body,
+            ),
+
+            const SizedBox(height: 20),
+
+            SearchField(
               onChanged: (value) {
                 setState(() {
                   searchQuery = value;
                 });
               },
-              decoration: InputDecoration(
-                hintText: 'Search exercises...',
-                prefixIcon: const Icon(Icons.search),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
             ),
-            const SizedBox(height: 16),
+
+            const SizedBox(height: AppSizes.itemSpacing),
+
             Expanded(
               child: isSearching
                   ? filteredExercises.isEmpty
-                        ? const Center(child: Text('No exercises found'))
+                        ? const Center(
+                            child: Text(
+                              'No exercises found',
+                              style: AppTextStyles.body,
+                            ),
+                          )
                         : ListView.builder(
                             itemCount: filteredExercises.length,
                             itemBuilder: (context, index) {
                               final exercise = filteredExercises[index];
 
-                              return ListTile(
-                                leading: CircleAvatar(
-                                  backgroundColor: Colors.transparent,
-                                  child: Image.asset(
-                                    ExerciseImageHelper.getImagePath(
-                                      exercise.name,
-                                    ),
-                                    width: 30,
-                                    height: 30,
-                                    fit: BoxFit.contain,
-                                  ),
-                                ),
-                                title: Text(exercise.name),
-                                subtitle: Text(exercise.category),
-                                trailing: const Icon(Icons.chevron_right),
+                              return ExerciseListTile(
+                                exercise: exercise,
+                                subtitle: exercise.category,
                                 onTap: () => openExercise(exercise),
                               );
                             },
@@ -180,8 +190,8 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
-                            mainAxisSpacing: 14,
-                            crossAxisSpacing: 14,
+                            mainAxisSpacing: AppSizes.itemSpacing,
+                            crossAxisSpacing: AppSizes.itemSpacing,
                             childAspectRatio: 1,
                           ),
                       itemBuilder: (context, index) {
@@ -190,9 +200,12 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
                         return GestureDetector(
                           onTap: () => openCategory(category),
                           child: Container(
+                            padding: const EdgeInsets.all(14),
                             decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey.shade400),
-                              borderRadius: BorderRadius.circular(12),
+                              color: AppColors.card,
+                              borderRadius: BorderRadius.circular(
+                                AppSizes.cardRadius,
+                              ),
                             ),
                             child: Column(
                               children: [
@@ -204,12 +217,16 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
                                     fit: BoxFit.contain,
                                   ),
                                 ),
-                                const SizedBox(height: 8),
+
+                                const SizedBox(height: 10),
+
                                 Text(
                                   category.toUpperCase(),
                                   textAlign: TextAlign.center,
-                                  style: const TextStyle(
+                                  style: AppTextStyles.body.copyWith(
+                                    color: AppColors.softText,
                                     fontWeight: FontWeight.bold,
+                                    fontSize: 14,
                                   ),
                                 ),
                               ],
@@ -240,57 +257,51 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
     }).toList()..sort((a, b) => a.name.compareTo(b.name));
 
     return Scaffold(
+      backgroundColor: AppColors.background,
       appBar: AppBar(
+        backgroundColor: AppColors.background,
+        elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back, color: AppColors.softText),
           onPressed: goBack,
         ),
         title: Text(
           selectedCategory == 'All'
               ? 'All Exercises'
               : '$selectedCategory Exercises',
+          style: AppTextStyles.sectionTitle,
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(AppSizes.screenPadding),
         child: Column(
           children: [
-            TextField(
+            SearchField(
               onChanged: (value) {
                 setState(() {
                   searchQuery = value;
                 });
               },
-              decoration: InputDecoration(
-                hintText: 'Search exercises...',
-                prefixIcon: const Icon(Icons.search),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
             ),
+
             const SizedBox(height: 20),
+
             Expanded(
               child: list.isEmpty
-                  ? const Center(child: Text('No exercises found'))
+                  ? const Center(
+                      child: Text(
+                        'No exercises found',
+                        style: AppTextStyles.body,
+                      ),
+                    )
                   : ListView.builder(
                       itemCount: list.length,
                       itemBuilder: (context, index) {
                         final exercise = list[index];
 
-                        return ListTile(
-                          leading: CircleAvatar(
-                            backgroundColor: Colors.transparent,
-                            child: Image.asset(
-                              ExerciseImageHelper.getImagePath(exercise.name),
-                              width: 50,
-                              height: 50,
-                              fit: BoxFit.contain,
-                            ),
-                          ),
-                          title: Text(exercise.name),
-                          subtitle: Text(exercise.muscleGroup),
-                          trailing: const Icon(Icons.chevron_right),
+                        return ExerciseListTile(
+                          exercise: exercise,
+                          subtitle: exercise.muscleGroup,
                           onTap: () => openExercise(exercise),
                         );
                       },
@@ -301,90 +312,4 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
       ),
     );
   }
-
-  // ================= EXERCISE DETAILS SCREEN =================
-
-  // Widget _exerciseDetailsScreen() {
-  //   final exercise = selectedExercise!;
-
-  //   return Scaffold(
-  //     appBar: AppBar(
-  //       leading: IconButton(
-  //         icon: const Icon(Icons.arrow_back),
-  //         onPressed: goBack,
-  //       ),
-  //       title: Text(exercise.name),
-  //     ),
-  //     body: SingleChildScrollView(
-  //       padding: const EdgeInsets.all(16),
-  //       child: Column(
-  //         crossAxisAlignment: CrossAxisAlignment.start,
-  //         children: [
-  //           if (exercise.isCameraSupported)
-  //             Container(
-  //               width: double.infinity,
-  //               padding: const EdgeInsets.all(12),
-  //               margin: const EdgeInsets.only(bottom: 16),
-  //               decoration: BoxDecoration(
-  //                 color: Colors.green.withOpacity(0.12),
-  //                 borderRadius: BorderRadius.circular(12),
-  //                 border: Border.all(color: Colors.green),
-  //               ),
-  //               child: const Text(
-  //                 'Camera detection supported',
-  //                 style: TextStyle(
-  //                   fontWeight: FontWeight.bold,
-  //                   color: Colors.green,
-  //                 ),
-  //               ),
-  //             ),
-
-  //           Container(
-  //             height: 150,
-  //             width: double.infinity,
-  //             decoration: BoxDecoration(
-  //               border: Border.all(color: Colors.grey.shade400),
-  //               borderRadius: BorderRadius.circular(12),
-  //             ),
-  //             child: Center(
-  //               child: Text(
-  //                 exercise.muscleGroup.isNotEmpty
-  //                     ? exercise.muscleGroup
-  //                     : 'Muscle group',
-  //                 textAlign: TextAlign.center,
-  //               ),
-  //             ),
-  //           ),
-
-  //           const SizedBox(height: 20),
-
-  //           const Text(
-  //             'Overview',
-  //             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-  //           ),
-  //           const SizedBox(height: 8),
-  //           Text(exercise.description),
-
-  //           const SizedBox(height: 20),
-
-  //           const Text(
-  //             'Instructions',
-  //             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-  //           ),
-  //           const SizedBox(height: 8),
-  //           Text(exercise.instructions),
-
-  //           const SizedBox(height: 20),
-
-  //           const Text(
-  //             'Tips',
-  //             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-  //           ),
-  //           const SizedBox(height: 8),
-  //           Text(exercise.tips),
-  //         ],
-  //       ),
-  //     ),
-  //   );
-  // }
 }

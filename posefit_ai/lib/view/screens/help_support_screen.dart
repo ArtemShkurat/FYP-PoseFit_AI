@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:posefit_ai/utils/app_colors.dart';
+import 'package:posefit_ai/utils/app_text_styles.dart';
+import 'package:posefit_ai/utils/app_sizes.dart';
+
 import '../../controller/auth_service.dart';
+import '../widgets/app_message_popup.dart';
 
 class HelpSupportScreen extends StatefulWidget {
   const HelpSupportScreen({super.key});
@@ -22,8 +27,10 @@ class _HelpSupportScreenState extends State<HelpSupportScreen> {
     final message = messageController.text.trim();
 
     if (subject.isEmpty || message.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Subject and message are required.')),
+      showAppMessagePopup(
+        context: context,
+        message: 'Subject and message are required.',
+        isError: true,
       );
       return;
     }
@@ -43,9 +50,12 @@ class _HelpSupportScreenState extends State<HelpSupportScreen> {
       isSending = false;
     });
 
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(SnackBar(content: Text(response['message'])));
+    showAppMessagePopup(
+      context: context,
+      message: response['message'] ?? 'Message sent.',
+      isSuccess: response['success'] == true,
+      isError: response['success'] != true,
+    );
 
     if (response['success'] == true) {
       subjectController.clear();
@@ -53,71 +63,113 @@ class _HelpSupportScreenState extends State<HelpSupportScreen> {
     }
   }
 
+  Widget _supportTextField({
+    required TextEditingController controller,
+    required String hintText,
+    required int maxLength,
+    required int maxLines,
+  }) {
+    return TextField(
+      controller: controller,
+      maxLength: maxLength,
+      maxLines: maxLines,
+      style: AppTextStyles.body,
+      cursorColor: AppColors.primaryGreen,
+      decoration: InputDecoration(
+        hintText: hintText,
+        hintStyle: AppTextStyles.small,
+        counterStyle: AppTextStyles.small,
+        filled: true,
+        fillColor: AppColors.card,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(AppSizes.buttonRadius),
+          borderSide: BorderSide.none,
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(AppSizes.buttonRadius),
+          borderSide: const BorderSide(
+            color: AppColors.primaryGreen,
+            width: 1.5,
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Help & Support')),
+      backgroundColor: AppColors.background,
+
+      appBar: AppBar(
+        backgroundColor: AppColors.background,
+        elevation: 0,
+        iconTheme: const IconThemeData(color: AppColors.softText),
+        title: const Text('Help & Support', style: AppTextStyles.sectionTitle),
+      ),
 
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(AppSizes.screenPadding),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'Subject',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                ),
-              ),
+              const Text('Need help?', style: AppTextStyles.heading),
 
               const SizedBox(height: 8),
 
-              TextField(
+              const Text(
+                'Send a message about any issue, feedback, or question related to PoseFit AI.',
+                style: AppTextStyles.body,
+              ),
+
+              const SizedBox(height: 28),
+
+              const Text('Subject', style: AppTextStyles.cardTitle),
+
+              const SizedBox(height: 8),
+
+              _supportTextField(
                 controller: subjectController,
+                hintText: 'Subject',
                 maxLength: subjectMaxLength,
-                decoration: InputDecoration(
-                  hintText: 'Subject',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                ),
+                maxLines: 1,
               ),
 
               const SizedBox(height: 16),
 
-              const Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'Message',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                ),
-              ),
+              const Text('Message', style: AppTextStyles.cardTitle),
 
               const SizedBox(height: 8),
 
-              TextField(
+              _supportTextField(
                 controller: messageController,
+                hintText: 'Write your message...',
                 maxLength: messageMaxLength,
                 maxLines: 8,
-                decoration: InputDecoration(
-                  hintText: 'Write your message...',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                ),
               ),
 
               const SizedBox(height: 24),
 
               SizedBox(
                 width: double.infinity,
-                height: 56,
-                child: ElevatedButton(
+                height: AppSizes.buttonHeight,
+                child: ElevatedButton.icon(
                   onPressed: isSending ? null : sendMessage,
-                  child: isSending
-                      ? const CircularProgressIndicator()
-                      : const Text('Send'),
+                  icon: isSending
+                      ? const SizedBox(
+                          width: 18,
+                          height: 18,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            color: AppColors.background,
+                          ),
+                        )
+                      : const Icon(Icons.send),
+                  label: Text(
+                    isSending ? 'Sending...' : 'Send',
+                    style: AppTextStyles.buttonText,
+                  ),
                 ),
               ),
             ],
