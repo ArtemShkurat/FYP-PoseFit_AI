@@ -351,7 +351,10 @@ Future<bool?> showAddWorkoutLogDialog({
                           TextButton(
                             onPressed: isSaving
                                 ? null
-                                : () => Navigator.pop(context, false),
+                                : () {
+                                    FocusManager.instance.primaryFocus?.unfocus();
+                                    Navigator.pop(context, false);
+                                  },
                             child: const Text(
                               'Cancel',
                               style: TextStyle(color: AppColors.secondary),
@@ -378,10 +381,12 @@ Future<bool?> showAddWorkoutLogDialog({
     },
   );
 
+  WidgetsBinding.instance.addPostFrameCallback((_) {
   exerciseController.dispose();
   setsController.dispose();
   repsController.dispose();
   weightController.dispose();
+});
 
   return result;
 }

@@ -109,7 +109,7 @@ class _AccountScreenState extends State<AccountScreen> {
             TextButton(
               onPressed: () {
                 FocusManager.instance.primaryFocus?.unfocus();
-                Navigator.pop(context, false);
+                Navigator.of(context, rootNavigator: true).pop(false);
               },
               child: const Text('Cancel'),
             ),
@@ -146,7 +146,9 @@ class _AccountScreenState extends State<AccountScreen> {
       },
     );
 
-    controller.dispose();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      controller.dispose();
+    });
 
     if (result == true && mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
